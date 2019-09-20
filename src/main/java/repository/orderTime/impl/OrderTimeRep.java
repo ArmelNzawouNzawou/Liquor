@@ -92,7 +92,7 @@ public class OrderTimeRep implements OrderTimeInt {
     }
 
     @Override
-    public ArrayList<String> readAll(String type) {
+    public ArrayList<String> readAll() {
         OrderTiming orderTiming=null;
         ArrayList<String>myList=new ArrayList<>();
 

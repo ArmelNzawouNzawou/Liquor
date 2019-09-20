@@ -38,7 +38,7 @@ public static IceRep getIceRep(){
     }
 
     @Override
-    public ArrayList<String> readAll(String type) {
+    public ArrayList<String> readAll() {
         return null;
     }
 

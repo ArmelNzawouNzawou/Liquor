@@ -8,7 +8,7 @@ public interface Irepository<T,ID>
     T update(T t);
     void delete(ID id);
     T read(ID id);
-    ArrayList<String> readAll(String type);
+    ArrayList<String> readAll();
     int getItemNumber();
 
 }//end com.repository

@@ -1,9 +1,9 @@
 package service.itemServicePack;
 
-import com.domain.itemBuilder.beverages.noAlcoholProduct.NoAlcoholicProduct;
-import com.service.Iservice;
+import domain.item.impl.beverage.nonalcohol.NonAlcohol;
+import service.Iservice;
 
-public interface itemServiceInt extends Iservice<NoAlcoholicProduct, String>
+public interface itemServiceInt extends Iservice<NonAlcohol, String>
 {
    // ArrayList<ItemInterface>myItemList();
 

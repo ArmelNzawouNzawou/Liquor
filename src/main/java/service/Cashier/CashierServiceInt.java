@@ -1,7 +1,6 @@
 package service.Cashier;
-
-import com.domain.cashierBuilderPack.Cashier;
-import com.service.Iservice;
+import domain.cashierBuilderPack.Cashier;
+import service.Iservice;
 
 public interface CashierServiceInt extends Iservice<Cashier,String> {
 

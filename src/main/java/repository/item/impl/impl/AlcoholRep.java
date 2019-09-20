@@ -37,7 +37,7 @@ public class AlcoholRep implements AlcoholInt {
     }
 
     @Override
-    public ArrayList<String> readAll(String type) {
+    public ArrayList<String> readAll() {
         return null;
     }
 

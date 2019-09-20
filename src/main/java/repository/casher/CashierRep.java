@@ -1,8 +1,7 @@
 package repository.casher;
 
-import com.configPack.factoryConfig.FactorycashierConfig;
-import com.domain.cashierBuilderPack.Cashier;
-import com.factory.domain.cashierFactory.CashierFactory;
+import domain.cashierBuilderPack.Cashier;
+import factory.domain.cashierFactory.CashierFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -21,12 +20,6 @@ public class CashierRep implements CahierInterface {
     Connection conne;
 
     //to get the factory that will help to build cashier
-
-    ApplicationContext ctx = new AnnotationConfigApplicationContext(FactorycashierConfig.class);
-
-
-    CashierFactory cashierFactory;
-    ApplicationContext ctx2 = new AnnotationConfigApplicationContext(FactorycashierConfig.class);
 
 
     private CashierRep()
@@ -104,7 +97,7 @@ public class CashierRep implements CahierInterface {
             ResultSet rs=statement.executeQuery();
             while(rs.next())
             {
-                cashier=cashierFactory.getCashier(rs.getString(1),rs.getString(2),rs.getInt(3));
+                cashier=CashierFactory.getCashier(rs.getString(1),rs.getString(2),rs.getInt(3));
 
         } }catch (SQLException e)
             {
@@ -114,7 +107,7 @@ public class CashierRep implements CahierInterface {
     }
 
     @Override
-    public ArrayList<String> readAll(String type) {
+    public ArrayList<String> readAll() {
         Cashier cashier=null;
         ArrayList<String>myList=new ArrayList<>();
 
@@ -168,7 +161,7 @@ public class CashierRep implements CahierInterface {
             ResultSet rs=statement.executeQuery();
             while(rs.next())
             {
-                Cashier cashier=cashierFactory.getCashier(rs.getString(1),rs.getString(2),rs.getInt(3));
+                Cashier cashier=CashierFactory.getCashier(rs.getString(1),rs.getString(2),rs.getInt(3));
                 myList2.add(cashier.toString());
 
             } }catch (SQLException e)

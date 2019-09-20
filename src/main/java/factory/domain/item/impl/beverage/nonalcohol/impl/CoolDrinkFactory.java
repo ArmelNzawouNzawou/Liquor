@@ -1,6 +1,7 @@
 package factory.domain.item.impl.beverage.nonalcohol.impl;
 
-import com.domain.item.impl.beverage.nonalcohol.impl.CoolDrink;
+
+import domain.item.impl.beverage.nonalcohol.impl.CoolDrink;
 
 public class CoolDrinkFactory {
     public static CoolDrink getCooledrink(String id, String name){

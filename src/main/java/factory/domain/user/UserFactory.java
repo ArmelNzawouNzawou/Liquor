@@ -1,6 +1,6 @@
 package factory.domain.user;
 
-import com.domain.users.User;
+import domain.users.User;
 
 public class UserFactory {
     public static User getUser( String id,String Name, String SurName){

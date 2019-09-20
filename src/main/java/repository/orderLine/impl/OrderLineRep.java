@@ -96,7 +96,7 @@ public class OrderLineRep implements OrderLineInt {
     }
 
     @Override
-    public ArrayList<String> readAll(String type) {
+    public ArrayList<String> readAll() {
         OrderLine a1=null;
         ArrayList<String> myList2 = new ArrayList<>();
         try {

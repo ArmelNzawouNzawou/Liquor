@@ -38,7 +38,7 @@ public static EnergyDrinkRep getEnergyDrinkRep(){
     }
 
     @Override
-    public ArrayList<String> readAll(String type) {
+    public ArrayList<String> readAll() {
         return null;
     }
 

@@ -1,8 +1,9 @@
 package repository.user.impl;
 
-import com.domain.users.User;
-import com.factory.domain.user.UserFactory;
-import com.repository.user.UserInt;
+
+import domain.users.User;
+import factory.domain.user.UserFactory;
+import repository.user.UserInt;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -91,7 +92,7 @@ public class UserRep implements UserInt {
     }
 
     @Override
-    public ArrayList<String> readAll(String type) {
+    public ArrayList<String> readAll() {
         User user=null;
         ArrayList<String> myList2 = new ArrayList<>();
         try {

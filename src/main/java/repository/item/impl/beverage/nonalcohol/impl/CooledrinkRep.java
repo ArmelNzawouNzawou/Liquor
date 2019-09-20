@@ -36,7 +36,7 @@ public static CooledrinkRep getCooledrinkRep(){
     }
 
     @Override
-    public ArrayList<String> readAll(String type) {
+    public ArrayList<String> readAll() {
         return null;
     }
 

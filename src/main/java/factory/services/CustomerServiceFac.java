@@ -1,6 +1,7 @@
 package factory.services;
 
-import com.service.customerServ.CustomerService;
+
+import service.customerServ.CustomerService;
 
 public class CustomerServiceFac {
     private CustomerService cust;

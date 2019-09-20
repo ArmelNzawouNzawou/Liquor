@@ -1,15 +1,16 @@
 package service.Driver;
 
-import com.domain.driver.Driver;
-import com.factory.repository.DriverRepFact;
-import com.repository.drivers.DriverRep;
+
+import domain.driver.Driver;
+import factory.repository.DriverRepFact;
+import repository.drivers.impl.DriverRep;
 
 import java.util.ArrayList;
 
 public class DriverService implements DriverServiceInt {
 
 
-    DriverRep driver=DriverRepFact.getDriverRep();
+    DriverRep driver= DriverRepFact.getDriverRep();
 
     private static DriverService driverService=null;
 

@@ -1,6 +1,7 @@
 package factory.domain.item.impl.classic.impl;
 
-import com.domain.item.impl.classic.impl.Chips;
+
+import domain.item.impl.classic.impl.Chips;
 
 public class ChipsFactory {
     public static Chips getChips(String id, String name){

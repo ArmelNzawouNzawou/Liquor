@@ -38,7 +38,7 @@ public class ClassicRep implements ClassicInt {
     }
 
     @Override
-    public ArrayList<String> readAll(String type) {
+    public ArrayList<String> readAll() {
         return null;
     }
 

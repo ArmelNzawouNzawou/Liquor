@@ -1,18 +1,12 @@
 package service.classicService;
 
-import com.configPack.repositoryController.ClassicRepConfig;
-import com.domain.itemBuilder.classicItem.ClassicProduct;
-import com.repository.ItemRep.classicProducat.ClassicProductRep;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import domain.item.impl.classic.Classic;
 
 import java.util.ArrayList;
 
-public class ClassicService implements ClassicServiceInt {
+public class ClassicService //implements ClassicServiceInt
+{
     private static ClassicService classic;
-
-    ApplicationContext ctx=new AnnotationConfigApplicationContext(ClassicRepConfig.class);
-    ClassicProductRep classRep=(ClassicProductRep) ctx.getBean("getClassicRep");
 
     private ClassicService() {
     }
@@ -23,14 +17,14 @@ public class ClassicService implements ClassicServiceInt {
             classic=new ClassicService();
         }return classic;
     }
-
+/**
     @Override
-    public ClassicProduct create(ClassicProduct classicProduct) {
+    public Classic create(Classic classicProduct) {
         return classRep.create(classicProduct);
     }
 
     @Override
-    public ClassicProduct update(ClassicProduct classicProduct) {
+    public Classic update(Classic classicProduct) {
         return classRep.update(classicProduct);
     }
 
@@ -40,7 +34,7 @@ public class ClassicService implements ClassicServiceInt {
     }
 
     @Override
-    public ClassicProduct read(String id) {
+    public Classic read(String id) {
         return classRep.read(id);
     }
 
@@ -48,4 +42,5 @@ public class ClassicService implements ClassicServiceInt {
     public ArrayList readAlll() {
         return classRep.getAll();
     }
+    */
 }

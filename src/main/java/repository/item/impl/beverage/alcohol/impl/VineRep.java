@@ -36,7 +36,7 @@ public class VineRep implements VineInt {
     }
 
     @Override
-    public ArrayList<String> readAll(String type) {
+    public ArrayList<String> readAll() {
         return null;
     }
 

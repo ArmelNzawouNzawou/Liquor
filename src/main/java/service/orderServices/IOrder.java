@@ -1,6 +1,7 @@
 package service.orderServices;
 
-import com.service.Iservice;
+
+import service.Iservice;
 
 public interface IOrder extends Iservice {
 }

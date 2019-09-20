@@ -1,7 +1,8 @@
 package service.classicService;
 
-import com.domain.itemBuilder.classicItem.ClassicProduct;
-import com.service.Iservice;
+import domain.item.impl.classic.Classic;
+import service.Iservice;
 
-public interface ClassicServiceInt extends Iservice<ClassicProduct, String> {
+public interface ClassicServiceInt extends Iservice<Classic, String>
+{
 }

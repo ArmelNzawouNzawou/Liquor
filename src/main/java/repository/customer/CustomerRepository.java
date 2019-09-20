@@ -1,10 +1,7 @@
 package repository.customer;
 
-import com.configPack.domainConf.CustomerConfig;
-import com.domain.customerBuilder.Customer;
-import com.factory.domain.customerFactory.CustomerFactory;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import domain.customerBuilder.Customer;
+import factory.domain.customerFactory.CustomerFactory;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -20,9 +17,6 @@ public class CustomerRepository implements CustomerRep
     private String password="";
     private Connection conne;
 
-    ApplicationContext ctx2= new AnnotationConfigApplicationContext(CustomerConfig.class);
-
-    CustomerFactory customerFactory=(CustomerFactory)ctx2.getBean("getCustomer");
 
     private CustomerRepository()
     {
@@ -102,7 +96,7 @@ public class CustomerRepository implements CustomerRep
             ResultSet rs=statement.executeQuery();
             while(rs.next())
             {
-                cust = customerFactory.getCustomer(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6));
+                cust = CustomerFactory.getCustomer(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6));
 
             } }catch (SQLException e)
         {
@@ -113,6 +107,12 @@ public class CustomerRepository implements CustomerRep
         }
         return cust;
     }
+
+    @Override
+    public ArrayList<String> readAll() {
+        return null;
+    }
+
     public ArrayList getAll()
     {
 
@@ -124,7 +124,7 @@ public class CustomerRepository implements CustomerRep
             ResultSet rs=statement.executeQuery();
             while(rs.next())
             {
-                Customer cust = customerFactory.getCustomer(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6));      //getting the customerDetails Object
+                Customer cust = CustomerFactory.getCustomer(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6));      //getting the customerDetails Object
 
             } }catch (SQLException e)
         {
@@ -135,10 +135,7 @@ public class CustomerRepository implements CustomerRep
         return myList2;
     }
 
-    @Override
-    public Customer readAll(String type) {
-        return null;
-    }
+
 
     @Override
     public int getItemNumber()

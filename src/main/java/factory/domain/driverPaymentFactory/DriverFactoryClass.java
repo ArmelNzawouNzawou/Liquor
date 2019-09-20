@@ -1,12 +1,9 @@
 package factory.domain.driverPaymentFactory;
 
-import com.domain.payPack.Payment;
-import com.domain.payPack.driverPayPeriod.DailyPayment;
-import com.domain.payPack.driverPayPeriod.MounthlyPayments;
-import com.domain.payPack.driverPayPeriod.WeeklyPayment;
+
 
 public class DriverFactoryClass
-{
+{/**
     public static Payment getPayment(String payType){
         if(payType.equalsIgnoreCase("daily")){
             return new DailyPayment();
@@ -17,7 +14,7 @@ public class DriverFactoryClass
             return new WeeklyPayment();
         }
         else return null;
-    }
+    }**/
     
 
 }

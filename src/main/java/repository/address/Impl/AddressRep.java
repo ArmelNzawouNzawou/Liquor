@@ -91,7 +91,7 @@ public class AddressRep implements AddressInt {
     }
 
     @Override
-    public ArrayList<String> readAll(String type) {
+    public ArrayList<String> readAll() {
         Address address=null;
         ArrayList<String> myList2 = new ArrayList<>();
         try {

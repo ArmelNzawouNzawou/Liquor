@@ -101,7 +101,7 @@ public class OrderRep implements OrderRepositoryIn
     }
 
     @Override
-    public ArrayList<String> readAll(String type) {
+    public ArrayList<String> readAll() {
         Orders a1=null;
         ArrayList<String> myList2 = new ArrayList<>();
         try {

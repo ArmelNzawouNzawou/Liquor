@@ -1,6 +1,6 @@
 package factory.domain.driverFactory;
 
-import com.domain.driver.Driver;
+import domain.driver.Driver;
 
 public class DriverFactory {
 

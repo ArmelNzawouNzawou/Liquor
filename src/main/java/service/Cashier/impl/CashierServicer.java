@@ -1,17 +1,17 @@
 package service.Cashier.impl;
 
-import com.domain.cashierBuilderPack.Cashier;
-import com.factory.repository.CashierRepFac;
-import com.repository.casher.CashierRep;
-import com.service.Cashier.CashierServiceInt;
+import domain.cashierBuilderPack.Cashier;
+import factory.repository.CashierRepFac;
 import org.springframework.stereotype.Service;
+import repository.casher.CashierRep;
+import service.Cashier.CashierServiceInt;
 
 import java.util.ArrayList;
 
 @Service
 public class CashierServicer implements CashierServiceInt {
     private static CashierServicer cashier=null;
-    CashierRep cashierRep=CashierRepFac.getCashier();
+    CashierRep cashierRep= CashierRepFac.getCashier();
 
 
     private CashierServicer() {

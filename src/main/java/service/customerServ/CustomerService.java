@@ -1,8 +1,8 @@
 package service.customerServ;
 
-import com.domain.customerBuilder.Customer;
-import com.factory.repository.CustomerRepoFac;
-import com.repository.customerRepPack.CustomerRepository;
+import domain.customerBuilder.Customer;
+import factory.repository.CustomerRepoFac;
+import repository.customer.CustomerRepository;
 
 import java.util.ArrayList;
 
@@ -11,7 +11,7 @@ public class CustomerService implements CustomerServiceInt {
 
     //Getting the repository class.
 
-    CustomerRepository rep=CustomerRepoFac.getCustomerRepository();
+    CustomerRepository rep= CustomerRepoFac.getCustomerRepository();
     private CustomerService() {
 
     }

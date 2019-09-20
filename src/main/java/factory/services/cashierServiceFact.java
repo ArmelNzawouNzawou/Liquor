@@ -1,6 +1,7 @@
 package factory.services;
 
-import com.service.Cashier.impl.CashierServicer;
+
+import service.Cashier.impl.CashierServicer;
 
 public class cashierServiceFact {
     CashierServicer cashier;

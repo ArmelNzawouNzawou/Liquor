@@ -1,9 +1,9 @@
 package service.orderServices;
 
-import com.factory.domain.orderFactory.OrderFacto;
-import com.repository.orderRepository.OrderRep;
+import factory.domain.orderFactory.OrderFacto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import repository.orderRepository.impl.OrderRep;
 
 import java.util.ArrayList;
 
@@ -12,8 +12,7 @@ public class OrderServices implements IOrder {
     @Qualifier("orderService")
     private static OrderServices orderServices=null;
     private OrderRep orderRep=OrderRep.getOrders();
-    OrderFacto orderFacto=new OrderFacto();
-    OrderInt setterObject=orderFacto.getOrders("order");
+
 
     private OrderServices()
     {
