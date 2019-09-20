@@ -1,7 +1,7 @@
 package factory.repository;
 
 
-import repository.casher.CashierRep;
+import repository.casher.impl.CashierRep;
 
 public class CashierRepFac {
     private CashierRep cashierRep,cashierRe;

@@ -6,6 +6,7 @@ import repository.item.impl.classic.SnakesInt;
 import java.util.ArrayList;
 
 public class SnakesRep implements SnakesInt {
+    private ArrayList<Snakes>mydb=new ArrayList<>();
   private static SnakesRep snakesRep=null;
 
     private SnakesRep() {
@@ -19,31 +20,54 @@ public class SnakesRep implements SnakesInt {
 
     @Override
     public Snakes create(Snakes snakes) {
+        Snakes result= findIce(snakes.getId());
+        if(result==null){
+            mydb.add(snakes);
+            return snakes;
+        }
         return null;
     }
 
     @Override
     public Snakes update(Snakes snakes) {
+        Snakes result= findIce(snakes.getId());
+        if(result!=null){
+          delete(result.getId());
+            return create(snakes);
+        }
         return null;
     }
 
     @Override
     public void delete(String s) {
-
+        Snakes result= findIce(s);
+        if(result!=null){
+            mydb.remove(result);
+        }
     }
 
     @Override
     public Snakes read(String s) {
+        Snakes result= findIce(s);
+        if(result!=null){
+           return result;
+        }
         return null;
     }
 
     @Override
-    public ArrayList<String> readAll() {
-        return null;
+    public ArrayList<Snakes> readAll() {
+        return mydb;
     }
 
     @Override
     public int getItemNumber() {
         return 0;
+    }
+    public Snakes findIce(String id){
+        return mydb.stream()
+                .filter(C ->C.getId().equals(id))
+                .findAny()
+                .orElse(null);
     }
 }

@@ -6,6 +6,7 @@ import repository.item.ItemInt;
 import java.util.ArrayList;
 
 public class ItemRep implements ItemInt {
+    private ArrayList<Item>mydb =new ArrayList<>();
     private static ItemRep itemRep=null;
 
     private ItemRep() {
@@ -18,11 +19,17 @@ public class ItemRep implements ItemInt {
 
     @Override
     public Item create(Item item) {
+        Item result = findAlcohol(item.getItemNumber());
+        if(result==null){
+            mydb.add(item);
+            return item;
+        }
         return null;
     }
 
     @Override
     public Item update(Item item) {
+        
         return null;
     }
 
@@ -37,12 +44,18 @@ public class ItemRep implements ItemInt {
     }
 
     @Override
-    public ArrayList<String> readAll() {
+    public ArrayList<Item> readAll() {
         return null;
     }
 
     @Override
     public int getItemNumber() {
         return 0;
+    }
+    public Item findAlcohol(String id){
+        return mydb.stream()
+                .filter(C ->C.getItemNumber().equals(id))
+                .findAny()
+                .orElse(null);
     }
 }

@@ -3,7 +3,7 @@ package domain.cashierBuilderPack;
 public class Cashier {
     private String name;
     private String surName;
-    private int id;
+    private String id;
 
     private Cashier() {
     }
@@ -24,11 +24,11 @@ public class Cashier {
         this.surName = surName;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
     @Override
@@ -41,8 +41,8 @@ public class Cashier {
     public static class Builder{
         private String name;
         private String surName;
-        private int id;
-        public Builder(int id){
+        private String id;
+        public Builder(String id){
             this.id=id;
         }
         public Builder buildName(String name){

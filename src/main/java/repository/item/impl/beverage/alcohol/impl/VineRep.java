@@ -1,11 +1,13 @@
 package repository.item.impl.beverage.alcohol.impl;
 
+import domain.item.impl.beverage.alcohol.impl.Vine;
 import repository.item.impl.beverage.alcohol.VineInt;
 
 import java.util.ArrayList;
 
 public class VineRep implements VineInt {
     private static VineRep vine=null;
+    private ArrayList<Vine>mydb= new ArrayList<>();
 
     private VineRep() {
     }
@@ -16,32 +18,53 @@ public class VineRep implements VineInt {
     }
 
     @Override
-    public domain.item.impl.beverage.alcohol.impl.Vine create(domain.item.impl.beverage.alcohol.impl.Vine vine) {
+    public Vine create(Vine vine) {
+        Vine result=findVine(vine.getId());
+        if(result==null){
+            mydb.add(vine);
+            return vine;
+        }
         return null;
     }
 
     @Override
-    public domain.item.impl.beverage.alcohol.impl.Vine update(domain.item.impl.beverage.alcohol.impl.Vine vine) {
+    public Vine update(Vine vine) {
+        Vine result=findVine(vine.getId());
+        if(result!=null){
+            delete(result.getId());
+            return create(vine);
+        }
         return null;
     }
 
     @Override
     public void delete(String s) {
-
+        Vine result=findVine(s);
+        if(result!=null){
+        mydb.remove(result);}
     }
 
     @Override
-    public domain.item.impl.beverage.alcohol.impl.Vine read(String s) {
-        return null;
+    public Vine read(String s) {
+        Vine result=findVine(s);
+        if(result!=null){
+            return result;
+        }return null;
     }
 
     @Override
-    public ArrayList<String> readAll() {
-        return null;
+    public ArrayList<Vine> readAll() {
+        return mydb;
     }
 
     @Override
     public int getItemNumber() {
         return 0;
+    }
+    public Vine findVine(String id){
+        return mydb.stream()
+                .filter(V -> V.getId().equals(id))
+                .findAny()
+                .orElse(null);
     }
 }

@@ -15,6 +15,7 @@ public class BeerRep implements BeerInt {
     String pwds = "";
     Connection conn;
     private static BeerRep beerRep=null;
+    private ArrayList<Beer> mydb=new ArrayList<>();
     private BeerRep() {
         try {
             conn = DriverManager.getConnection(url, user, pwds);
@@ -32,32 +33,48 @@ public class BeerRep implements BeerInt {
 
     @Override
     public Beer create(Beer beer) {
-        String sql="INSERT INTO CASHIER VALUES(1, 'Hello','HI');";
-        return null;
+Beer result = findBeer(beer.getId());
+if(result==null){
+    mydb.add(beer);
+    return beer;
+}return null;
     }
 
     @Override
     public Beer update(Beer beer) {
-        return null;
+        Beer result = findBeer(beer.getId());
+        if(result!=null){
+           delete(beer.getId());
+            return create(result);
+        }return null;
     }
 
     @Override
     public void delete(String s) {
 
+        Beer result = findBeer(s);
+        if(result!=null){mydb.remove(result);}
     }
 
     @Override
     public Beer read(String s) {
-        return null;
+        Beer result = findBeer(s);
+        if(result!=null){return result;}return null;
     }
 
     @Override
-    public ArrayList<String> readAll() {
-        return null;
+    public ArrayList<Beer> readAll() {
+        return mydb;
     }
 
     @Override
     public int getItemNumber() {
         return 0;
+    }
+    public Beer findBeer(String id){
+        return mydb.stream()
+                .filter(B ->B.getId().equals(id))
+                .findAny()
+                .orElse(null);
     }
 }

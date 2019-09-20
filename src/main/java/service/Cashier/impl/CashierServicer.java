@@ -3,7 +3,7 @@ package service.Cashier.impl;
 import domain.cashierBuilderPack.Cashier;
 import factory.repository.CashierRepFac;
 import org.springframework.stereotype.Service;
-import repository.casher.CashierRep;
+import repository.casher.impl.CashierRep;
 import service.Cashier.CashierServiceInt;
 
 import java.util.ArrayList;

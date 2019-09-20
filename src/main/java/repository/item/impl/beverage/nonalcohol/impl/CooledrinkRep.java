@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 public class CooledrinkRep implements CooledrinkInt {
 private static CooledrinkRep cooledrinkRep=null;
+private ArrayList<CoolDrink> mydb= new ArrayList<>();
     private CooledrinkRep() {
     }
 public static CooledrinkRep getCooledrinkRep(){
@@ -17,31 +18,53 @@ public static CooledrinkRep getCooledrinkRep(){
 
     @Override
     public CoolDrink create(CoolDrink coolDrink) {
+        CoolDrink result = findCooldrink(coolDrink.getId());
+        if(result==null){
+            mydb.add(coolDrink);
+            return coolDrink;
+        }
         return null;
     }
 
     @Override
     public CoolDrink update(CoolDrink coolDrink) {
+        CoolDrink result = findCooldrink(coolDrink.getId());
+        if(result!=null){
+           delete(result.getId());
+            return create(coolDrink);
+        }
         return null;
     }
 
     @Override
     public void delete(String s) {
-
+        CoolDrink result = findCooldrink(s);
+        if(result==null){
+           mydb.remove(result);
+        }
     }
 
     @Override
     public CoolDrink read(String s) {
-        return null;
+        CoolDrink result = findCooldrink(s);
+        if(result==null){
+            return result;
+        }return null;
     }
 
     @Override
-    public ArrayList<String> readAll() {
-        return null;
+    public ArrayList<CoolDrink> readAll() {
+        return mydb;
     }
 
     @Override
     public int getItemNumber() {
         return 0;
+    }
+    public CoolDrink findCooldrink(String id){
+        return mydb.stream()
+                .filter(C ->C.getId().equals(id))
+                .findAny()
+                .orElse(null);
     }
 }

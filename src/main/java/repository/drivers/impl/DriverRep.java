@@ -8,19 +8,10 @@ import java.util.ArrayList;
 public class DriverRep implements DriverRepInt {
 
     private static DriverRep driverRep = null;
-    private int value;
-    //database setting up
-    private String url = "jdbc:mysql://localhost:3306/delivery_system?autoReconnect=true&useSSL=false";
-    private String user = "root";
-    private String password = "";
-    private Connection conne;
+    private ArrayList<Driver> mydb=new ArrayList<>();
 
     private DriverRep() {
-        try {
-            this.conne = DriverManager.getConnection(url, user, password);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+
     }
 
     public static DriverRep getInstance() {
@@ -32,17 +23,29 @@ public class DriverRep implements DriverRepInt {
 
     @Override
     public Driver create(Driver driver) {
+        Driver result=findDriver(driver.getId());
+        if(result==null){
+            mydb.add(driver);
+            return driver;
+        }
         return null;
     }
 
     @Override
     public Driver update(Driver driver) {
+        Driver result=findDriver(driver.getId());
+        if(result!=null){
+            delete(result.getId());
+
+            return create(driver);
+        }else
         return null;
     }
 
     @Override
     public void delete(String s) {
-
+        Driver result=findDriver(s);
+        if(result!=null){ mydb.remove(result);}
     }
 
     @Override
@@ -51,12 +54,19 @@ public class DriverRep implements DriverRepInt {
     }
 
     @Override
-    public ArrayList<String> readAll() {
-        return null;
+    public ArrayList<Driver> readAll() {
+       return mydb;
     }
 
     @Override
     public int getItemNumber() {
         return 0;
+    }
+
+    public Driver findDriver(String id){
+        return mydb.stream()
+                .filter(D -> D.getId().equals(id))
+                .findAny()
+                .orElse(null);
     }
 }

@@ -6,6 +6,7 @@ import repository.item.ClassicInt;
 import java.util.ArrayList;
 
 public class ClassicRep implements ClassicInt {
+    private ArrayList<Classic> mydb=new ArrayList<>();
     private static ClassicRep classicRep=null;
 
     private ClassicRep() {
@@ -19,31 +20,55 @@ public class ClassicRep implements ClassicInt {
 
     @Override
     public Classic create(Classic classic) {
+        Classic result= findAlcohol(classic.getClissic_id());
+        if(result==null){
+            mydb.add(classic);
+            return classic;
+        }
         return null;
     }
 
     @Override
     public Classic update(Classic classic) {
+        Classic result= findAlcohol(classic.getClissic_id());
+        if(result!=null){
+            delete(result.getClissic_id());
+            return create(classic);
+        }
         return null;
     }
 
     @Override
     public void delete(String s) {
+        Classic result= findAlcohol(s);
+        if(result!=null){
+           mydb.remove(result);
+        }
 
     }
 
     @Override
     public Classic read(String s) {
+        Classic result= findAlcohol(s);
+        if(result!=null){
+            return result;
+        }
         return null;
     }
 
     @Override
-    public ArrayList<String> readAll() {
-        return null;
+    public ArrayList<Classic> readAll() {
+        return mydb;
     }
 
     @Override
     public int getItemNumber() {
         return 0;
+    }
+    public Classic findAlcohol(String id){
+        return mydb.stream()
+                .filter(C ->C.getClissic_id().equals(id))
+                .findAny()
+                .orElse(null);
     }
 }

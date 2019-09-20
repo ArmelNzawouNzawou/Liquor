@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class CigarateRep implements CigarateInt {
 
     private static CigarateRep cigarateRep=null;
+    private ArrayList<Cigarate>mydb = new ArrayList<>();
     private CigarateRep() {
     }
 public static CigarateRep getCigarateRep(){
@@ -18,31 +19,55 @@ public static CigarateRep getCigarateRep(){
 
     @Override
     public Cigarate create(Cigarate cigarate) {
+        Cigarate result = findCooldrink(cigarate.getId());
+        if(result==null){
+            mydb.add(cigarate);
+            return cigarate;
+        }
         return null;
     }
 
     @Override
     public Cigarate update(Cigarate cigarate) {
+        Cigarate result = findCooldrink(cigarate.getId());
+        if(result!=null){
+            delete(result.getId());
+            return create(cigarate);
+        }
         return null;
     }
 
     @Override
     public void delete(String s) {
 
+        Cigarate result = findCooldrink(s);
+        if(result!=null){
+           mydb.remove(result);
+        }
     }
 
     @Override
     public Cigarate read(String s) {
-        return null;
+        Cigarate result = findCooldrink(s);
+        if(result!=null){
+            return result;
+        }return null;
     }
 
     @Override
-    public ArrayList<String> readAll() {
-        return null;
+    public ArrayList<Cigarate> readAll() {
+        return mydb;
     }
 
     @Override
     public int getItemNumber() {
         return 0;
+    }
+
+    public Cigarate findCooldrink(String id){
+        return mydb.stream()
+                .filter(C ->C.getId().equals(id))
+                .findAny()
+                .orElse(null);
     }
 }
