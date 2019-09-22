@@ -8,5 +8,5 @@ public interface Iservice<T,id>
     T update(T t);
  void delete(String id);
     T read(String id);
-    ArrayList<String> readAlll();
+    ArrayList<T> readAlll();
 }

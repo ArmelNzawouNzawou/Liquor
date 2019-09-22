@@ -39,7 +39,7 @@ public static CooledrinkRep getCooledrinkRep(){
     @Override
     public void delete(String s) {
         CoolDrink result = findCooldrink(s);
-        if(result==null){
+        if(result!=null){
            mydb.remove(result);
         }
     }
@@ -47,7 +47,7 @@ public static CooledrinkRep getCooledrinkRep(){
     @Override
     public CoolDrink read(String s) {
         CoolDrink result = findCooldrink(s);
-        if(result==null){
+        if(result!=null){
             return result;
         }return null;
     }

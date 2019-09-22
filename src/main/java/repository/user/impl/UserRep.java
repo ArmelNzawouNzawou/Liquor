@@ -1,6 +1,7 @@
 package repository.user.impl;
 
 
+import domain.driverPay.DriverPay;
 import domain.users.User;
 import factory.domain.user.UserFactory;
 import repository.user.UserInt;
@@ -10,18 +11,11 @@ import java.util.ArrayList;
 
 public class UserRep implements UserInt {
     private static UserRep userRep=null;
+    private ArrayList<User>mydb=new ArrayList<>();
 
-    private String url = "jdbc:mysql://localhost:3306/delivery_system?autoReconnect=true&useSSL=false";
-    private String user = "root";
-    private String password = "";
-    private Connection conne;
 
     private UserRep() {
-        try {
-            this.conne = DriverManager.getConnection(url, user, password);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+
     }
 
     public static UserRep getUserRep(){
@@ -31,104 +25,52 @@ public class UserRep implements UserInt {
     }
     @Override
     public User create(User user) {
-        int driverNumber = getItemNumber();
-        String getDriverNumber = "" + driverNumber + "".trim();
-        try {
-            String sql = "INSERT INTO USERS(USER_ID , NAME ,SURNAME )" +
-                    " VALUES ('" + driverNumber + "','" + user.getName() + "','" + user.getSurName() + "');";
-            PreparedStatement statement = conne.prepareStatement(sql);
-            statement.executeUpdate();
-            System.out.println("one row inserted in Item table");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return read(getDriverNumber);
+        User result=findUser(user.getId());
+        if(result==null){
+            mydb.add(user);
+            return user;
+        }return null;
     }
 
     @Override
     public User update(User user) {
-        String custNumber = user.getId();
-        //System.out.println(custNumber);
-        try {
-            String sql = "update USERS set NAME='"+user.getName() +"',SURNAME='" + user.getSurName() + "',WHERE USER_ID='" + custNumber + "';";
-            PreparedStatement statement = conne.prepareStatement(sql);
-            statement.executeUpdate();
-            System.out.println("one row updated in Driver table");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return read(custNumber);
+        User result=findUser(user.getId());
+        if(result!=null){
+           delete(result.getId());
+            return create(user);
+        }return null;
     }
 
     @Override
     public void delete(String s) {
-
-        int s2 = Integer.parseInt(s);
-        //before deleting we read first
-        System.out.println(read(s).toString() + "\n this driver is deleted");
-        try {
-            String sql = "DELETE from USERS WHERE USER_ID=" + s2 + ";";
-            PreparedStatement statement = conne.prepareStatement(sql);
-            statement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
+        User result=findUser(s);
+        if(result!=null){
+            mydb.remove(result);
         }
     }
 
     @Override
     public User read(String s) {
-        User user=null;
-        try {
-            String sql = "select * from ADDRESS WHERE USER_ID=" + s + ";";
-            PreparedStatement statement = conne.prepareStatement(sql);
-            ResultSet rs = statement.executeQuery();
-            while (rs.next()) {
-                user= UserFactory.getUser(rs.getString(1),rs.getString(2),rs.getString(3));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return user;
+        User result=findUser(s);
+        if(result!=null){
+            return result;
+        }return null;
     }
 
     @Override
-    public ArrayList<String> readAll() {
-        User user=null;
-        ArrayList<String> myList2 = new ArrayList<>();
-        try {
-            String sql = "select * from ADDRESS ;";
-            PreparedStatement statement = conne.prepareStatement(sql);
-            ResultSet rs = statement.executeQuery();
-            while (rs.next()) {
-                user= UserFactory.getUser(rs.getString(1),rs.getString(2),rs.getString(3));
-                myList2.add(user.toString());
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (NullPointerException x) {
-        }
-        return myList2;
+    public ArrayList<User> readAll() {
+       return mydb;
     }
 
     @Override
     public int getItemNumber() {
-        int highValeu=0;
-        try {
-            String sql="select MAX(USER_ID) from ADDRESS ;";
-            PreparedStatement statement=conne.prepareStatement(sql);
-            ResultSet rs=statement.executeQuery();
-            while(rs.next())
-            {
-                highValeu=Integer.parseInt(rs.getString(1));
-            } }catch (SQLException e)
-        {
-            e.printStackTrace();
-        }catch (NullPointerException e )
-        {
-            highValeu=1000;
-        }catch (NumberFormatException x){ highValeu=1000;}
 
-
-        return highValeu;
+        return 0;
+    }
+    public User findUser(String id){
+        return mydb.stream()
+                .filter(C ->C.getId().equals(id))
+                .findAny()
+                .orElse(null);
     }
 }

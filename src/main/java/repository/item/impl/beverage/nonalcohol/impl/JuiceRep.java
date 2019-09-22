@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 public class JuiceRep implements JuiceInt {
     private static JuiceRep juiceRep=null;
+    private ArrayList<Juice>mydb=new ArrayList<>();
 
     private JuiceRep() {
     }
@@ -19,31 +20,53 @@ public class JuiceRep implements JuiceInt {
 
     @Override
     public Juice create(Juice juice) {
+        Juice result=findJuice(juice.getId());
+        if(result==null){
+            mydb.add(juice);
+            return juice;
+        }
         return null;
     }
 
     @Override
     public Juice update(Juice juice) {
+        Juice result=findJuice(juice.getId());
+        if(result!=null){
+           delete(result.getId());
+            return create(juice);
+        }
         return null;
     }
 
     @Override
     public void delete(String s) {
-
+        Juice result=findJuice(s);
+        if(result!=null){
+           mydb.remove(result);
+        }
     }
 
     @Override
     public Juice read(String s) {
+        Juice result=findJuice(s);
+        if(result!=null){
+            return result;
+        }
         return null;
     }
 
     @Override
-    public ArrayList<String> readAll() {
-        return null;
+    public ArrayList<Juice> readAll() {
+        return mydb;
     }
 
     @Override
     public int getItemNumber() {
         return 0;
+    }
+    public Juice findJuice(String id){
+        return mydb.stream().filter(J ->J.getId().equals(id))
+                .findAny()
+                .orElse(null);
     }
 }

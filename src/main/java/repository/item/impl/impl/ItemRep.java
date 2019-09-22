@@ -29,23 +29,36 @@ public class ItemRep implements ItemInt {
 
     @Override
     public Item update(Item item) {
-        
+        Item result = findAlcohol(item.getItemNumber());
+        if(result!=null){
+            delete(result.getItemNumber());
+            return create(item);
+        }
         return null;
     }
 
     @Override
     public void delete(String s) {
 
+        Item result = findAlcohol(s);
+        if(result!=null){
+           mydb.remove(result);
+        }
     }
 
     @Override
     public Item read(String s) {
+        Item result = findAlcohol(s);
+        if(result!=null){
+
+            return result;
+        }
         return null;
     }
 
     @Override
     public ArrayList<Item> readAll() {
-        return null;
+        return mydb;
     }
 
     @Override

@@ -2,13 +2,14 @@ package service.Cashier.impl;
 
 import domain.cashierBuilderPack.Cashier;
 import factory.repository.CashierRepFac;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import repository.casher.impl.CashierRep;
 import service.Cashier.CashierServiceInt;
 
 import java.util.ArrayList;
 
-@Service
+@Component
 public class CashierServicer implements CashierServiceInt {
     private static CashierServicer cashier=null;
     CashierRep cashierRep= CashierRepFac.getCashier();
@@ -57,7 +58,7 @@ public class CashierServicer implements CashierServiceInt {
     }
 
     @Override
-    public ArrayList readAlll() {
-        return cashierRep.getAll();
+    public ArrayList<Cashier> readAlll() {
+        return cashierRep.readAll();
     }
 }
