@@ -2,11 +2,12 @@ package service.item.impl.impl;
 
 import domain.item.impl.beverage.alcohol.Alcohol;
 import factory.repository.item.impl.impl.AlcoholRepFactory;
+import org.springframework.stereotype.Component;
 import repository.item.impl.impl.AlcoholRep;
 import service.item.AlcoholInt;
 
 import java.util.ArrayList;
-
+@Component
 public class AlcoholService implements AlcoholInt {
 
     private AlcoholRep alco= AlcoholRepFactory.getAlcoholRep();

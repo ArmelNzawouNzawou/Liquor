@@ -2,9 +2,16 @@ package domain.item.impl.beverage.alcohol;
 
 public class Alcohol {
     private String Alcohol_id;
-    private String ContainerType;
-    private String alcoholePercentage;
     private String item_id;
+    private String description;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     private Alcohol() {
     }
@@ -17,22 +24,6 @@ public class Alcohol {
         Alcohol_id = alcohol_id;
     }
 
-    public String getContainerType() {
-        return ContainerType;
-    }
-
-    public void setContainerType(String containerType) {
-        ContainerType = containerType;
-    }
-
-    public String getAlcoholePercentage() {
-        return alcoholePercentage;
-    }
-
-    public void setAlcoholePercentage(String alcoholePercentage) {
-        this.alcoholePercentage = alcoholePercentage;
-    }
-
     public String getItem_id() {
         return item_id;
     }
@@ -40,20 +31,25 @@ public class Alcohol {
     public void setItem_id(String item_id) {
         this.item_id = item_id;
     }
+
+    @Override
+    public String toString() {
+        return "Alcohol{" +
+                "Alcohol_id='" + Alcohol_id + '\'' +
+                ", item_id='" + item_id + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
+
     public static class Builder{
         private String Alcohol_id;
-        private String ContainerType;
-        private String alcoholePercentage;
         private String item_id;
+        private String description;
         public Builder(String alcohol_id){
             this.Alcohol_id=alcohol_id;
         }
-        public Builder buildContaina(String containerType){
-            this.ContainerType=containerType;
-            return this;
-        }
-        public Builder buildAlcoholPercentage(String alcoholePercentage){
-            this.alcoholePercentage=alcoholePercentage;
+        public Builder buildDescription(String description){
+            this.description=description;
             return this;
         }
         public Builder buildItemId(String item_id){
@@ -63,8 +59,7 @@ public class Alcohol {
         public Alcohol build(){
             Alcohol nonAlcohol=new Alcohol();
             nonAlcohol.Alcohol_id=this.Alcohol_id;
-            nonAlcohol.alcoholePercentage=this.alcoholePercentage;
-            nonAlcohol.ContainerType=this.ContainerType;
+            nonAlcohol.description=this.description;
             nonAlcohol.item_id=this.item_id;
             return nonAlcohol;
         }

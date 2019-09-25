@@ -2,11 +2,12 @@ package service.item.impl.impl;
 
 import domain.item.Item;
 import factory.repository.item.impl.impl.ItemRepFactory;
+import org.springframework.stereotype.Component;
 import repository.item.impl.impl.ItemRep;
 import service.item.ItemInt;
 
 import java.util.ArrayList;
-
+@Component
 public class ItemService implements ItemInt {
     private static ItemService itemRep=null;
     private ItemRep itemR= ItemRepFactory.getItemRep();

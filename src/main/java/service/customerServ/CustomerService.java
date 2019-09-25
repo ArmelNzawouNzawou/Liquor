@@ -47,6 +47,6 @@ public class CustomerService implements CustomerServiceInt {
 
     @Override
     public ArrayList readAlll() {
-        return rep.getAll();
+        return rep.readAll();
     }
 }

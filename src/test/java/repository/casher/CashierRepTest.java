@@ -8,7 +8,7 @@ import org.junit.Test;
 import repository.casher.impl.CashierRep;
 
 public class CashierRepTest {
-    private Cashier cashier= CashierFactory.getCashier("espoir","diteke",12323);
+    private Cashier cashier= CashierFactory.getCashier("espoir","diteke","12323");
     private CashierRep cashierRep= CashierRepFac.getCashier();
 
     @Before

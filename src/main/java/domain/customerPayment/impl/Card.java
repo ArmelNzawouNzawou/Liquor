@@ -2,7 +2,6 @@ package domain.customerPayment.impl;
 
 public class Card {
     private String customerNumber;
-    private String orderNumber;
     private String bankName;
     private String paymentDetaild;
     private double amount;
@@ -36,14 +35,6 @@ public class Card {
         this.customerNumber = customerNumber;
     }
 
-    public String getOrderNumber() {
-        return orderNumber;
-    }
-
-    public void setOrderNumber(String orderNumber) {
-        this.orderNumber = orderNumber;
-    }
-
     public double getAmount() {
         return amount;
     }
@@ -72,7 +63,6 @@ public class Card {
     public String toString() {
         return "Card{" +
                 "customerNumber='" + customerNumber + '\'' +
-                ", orderNumber='" + orderNumber + '\'' +
                 ", bankName='" + bankName + '\'' +
                 ", paymentDetaild='" + paymentDetaild + '\'' +
                 ", amount=" + amount +
@@ -83,7 +73,6 @@ public class Card {
 
     public static class Builder{
         private String customerNumber;
-        private String orderNumber;
         private double amount;
         private String payment_id;
         private String arrengement_id;
@@ -93,10 +82,7 @@ public class Card {
         public Builder (String payment_id){
             this.payment_id=payment_id;
         }
-        public Builder buildOrderNumber(String orderNumber){
-            this.orderNumber=orderNumber;
-            return this;
-        }
+
         public Builder buildAmount(double amount){
             this.amount=amount;
             return this;
@@ -122,7 +108,6 @@ public class Card {
             cash.amount=this.amount;
             cash.arrengement_id=this.arrengement_id;
             cash.customerNumber=this.customerNumber;
-            cash.orderNumber=this.orderNumber;
             cash.payment_id=this.payment_id;
             cash.bankName=this.bankName;
             cash.paymentDetaild=this.paymentDetaild;

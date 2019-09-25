@@ -19,7 +19,7 @@ public class OrderServices implements IOrder {
     {
 
     }
-    public static OrderServices getInstance()
+    public static OrderServices getOrderServices()
     {
         if(orderServices==null)
         {

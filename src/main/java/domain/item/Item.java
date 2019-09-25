@@ -1,19 +1,27 @@
 package domain.item;
 
 public class Item {
-    private String itemNumber;
+    private String id;
+    private String itemName;
     private String itemBranch;
-    private String itemPrice;
 
     private Item() {
     }
 
-    public String getItemNumber() {
-        return itemNumber;
+    public String getId() {
+        return id;
     }
 
-    public void setItemNumber(String itemNumber) {
-        this.itemNumber = itemNumber;
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getItemNamer() {
+        return itemName;
+    }
+
+    public void setItemNumber(String itemName) {
+        this.itemName = itemName;
     }
 
     public String getItemBranch() {
@@ -24,42 +32,36 @@ public class Item {
         this.itemBranch = itemBranch;
     }
 
-    public String getItemPrice() {
-        return itemPrice;
-    }
-
-    public void setItemPrice(String itemPrice) {
-        this.itemPrice = itemPrice;
-    }
-
     @Override
     public String toString() {
         return "Item{" +
-                "itemNumber='" + itemNumber + '\'' +
+                "id='" + id + '\'' +
+                ", itemNumber='" + itemName + '\'' +
                 ", itemBranch='" + itemBranch + '\'' +
-                ", itemPrice='" + itemPrice + '\'' +
                 '}';
     }
+
     public static class Builder{
-        private String itemNumber;
+        private String id;
+        private String itemName;
         private String itemBranch;
-        private String itemPrice;
-        public Builder(String itemNumber){
-            this.itemNumber=itemNumber;
+        public Builder(String itemName){
+            this.itemName=itemName;
         }
         public Builder buildItemBranch(String itemBranch){
             this.itemBranch=itemBranch;
             return this;
         }
-        public Builder buildItemPrice(String itemPrice){
-            this.itemPrice=itemPrice;
+        public Builder buildId(String id){
+            this.id=id;
             return this;
         }
+
         public Item build(){
             Item item=new Item();
+            item.id=this.id;
             item.itemBranch=this.itemBranch;
-            item.itemNumber=this.itemNumber;
-            item.itemPrice=this.itemPrice;
+            item.itemName=this.itemName;
             return item;
         }
     }

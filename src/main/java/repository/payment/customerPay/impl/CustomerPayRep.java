@@ -65,6 +65,13 @@ public class CustomerPayRep implements CustomerPayInt {
     public int getItemNumber() {
         return 0;
     }
+
+    /**
+     * this method need to be checked up because one customer may have payed manytimes
+     * actually the combination of customer nuber and ordernumber would be preffered
+     * @param id
+     * @return
+     */
     public CustomerPay findCustomerPay(String id){
         return mydb.stream()
                 .filter(C ->C.getCustomerNumber().equals(id))

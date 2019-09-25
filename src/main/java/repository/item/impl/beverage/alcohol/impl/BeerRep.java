@@ -33,10 +33,11 @@ public class BeerRep implements BeerInt {
 
     @Override
     public Beer create(Beer beer) {
-Beer result = findBeer(beer.getId());
-if(result==null){
-    mydb.add(beer);
-    return beer;
+    Beer result = findBeer(beer.getId());
+    if(result==null&&beer!=null){
+        Beer b= BeerFactory.getBeer(beer.getName(),beer.getSize(),beer.getPrice());
+    mydb.add(b);
+    return b;
 }return null;
     }
 

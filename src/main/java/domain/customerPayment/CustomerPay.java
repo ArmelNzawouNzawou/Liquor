@@ -71,5 +71,13 @@ public class CustomerPay {
             this.payType=payType;
             return this;
         }
+        public CustomerPay build(){
+            CustomerPay cust=new CustomerPay();
+            cust.customerNumber=this.customerNumber;
+            cust.orderNumber=this.orderNumber;
+            cust.payId=this.payId;
+            cust.payType=this.payType;
+            return cust;
+        }
     }
 }

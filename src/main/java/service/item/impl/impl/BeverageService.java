@@ -2,11 +2,12 @@ package service.item.impl.impl;
 
 import domain.item.impl.beverage.Beverage;
 import factory.repository.item.impl.impl.BeverageRepFactory;
+import org.springframework.stereotype.Component;
 import repository.item.impl.impl.BeverageRep;
 import service.item.BevergeInt;
 
 import java.util.ArrayList;
-
+@Component
 public class BeverageService implements BevergeInt {
 private BeverageRep bv = BeverageRepFactory.getBeverageRep();
     private static BeverageService beverageRep;

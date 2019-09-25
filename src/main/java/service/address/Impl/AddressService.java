@@ -10,13 +10,13 @@ import java.util.ArrayList;
 
 @Component
 public class AddressService implements AddressInt {
-    private AddressService addressService;
+    private static AddressService addressService;
     private AddressRep addressRep= AddressRepFactory.getAddress();
 
     private AddressService() {
     }
 
-    public AddressService getAddressService(){
+    public static AddressService getAddressService(){
         if(addressService==null){
             addressService=new AddressService();
 
