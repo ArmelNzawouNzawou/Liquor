@@ -56,6 +56,12 @@ public class BeverageRep implements BevergeInt {
         }
         return null;
     }
+    public Beverage getBev(String name){
+        return mydb.stream()
+                .filter(B -> B.getBevName().equals(name))
+                .findAny()
+                .orElse(null);
+    }
 
     @Override
     public ArrayList<Beverage> readAll() {

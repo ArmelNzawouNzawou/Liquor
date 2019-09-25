@@ -22,7 +22,7 @@ public class Item_BeverageRepo implements Beverage_ItemInt {
     public Item_beverage create(Item_beverage item) {
         Item_beverage result=findItemb(item.getId());
         if(result==null){
-            Item_beverage result1= Item_beverageFactory.getItem_beveradge(item.getItem_id(),item.getBeverage_id(),item.getDescription());
+            Item_beverage result1= Item_beverageFactory.getItem_beveradge(item.getItem_Branch(),item.getBeverage_id(),item.getDescription());
             mydb.add(result1);
             return result1;
         }
@@ -33,7 +33,7 @@ public class Item_BeverageRepo implements Beverage_ItemInt {
     public Item_beverage update(Item_beverage item) {
         Item_beverage result=findItemb(item.getId());
         if(result!=null){
-            Item_beverage result1= Item_beverageFactory.updateItem_beveradge(item.getId(),item.getItem_id(),item.getBeverage_id(),item.getDescription());
+            Item_beverage result1= Item_beverageFactory.updateItem_beveradge(item.getId(),item.getItem_Branch(),item.getBeverage_id(),item.getDescription());
             return result1;
         }
         return null;

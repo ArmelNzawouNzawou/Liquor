@@ -25,8 +25,8 @@ public class Beverage_AlcoholController implements ControllerInt<Beverage_Alcoho
     @PostMapping("/create")
     @Override
     public Beverage_Alcohol create(@RequestBody Beverage_Alcohol beverage_alcohol) {
-        String itemId=itemService.read();
-        String beverageId=beverage_alcohol.getItem_id();
+       // String itemId=itemService.read();
+        // String beverageId=beverage_alcohol.getItem_id();
         return beverage_alcoholServ.create(beverage_alcohol);
     }
 

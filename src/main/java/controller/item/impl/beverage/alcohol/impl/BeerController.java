@@ -58,12 +58,12 @@ public class BeerController implements ControllerInt<Beer,String> {
     @PostMapping("/update")
     @Override
     public Beer update(@RequestBody Beer beer) {
-        return null;
+        return beerService.update(beer);
     }
 
     @GetMapping("/reads")
     @Override
     public ArrayList<Beer> readAll() {
-        return null;
+        return beerService.readAlll();
     }
 }

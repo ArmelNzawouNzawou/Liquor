@@ -19,7 +19,7 @@ public class ItemRep implements ItemInt {
 
     @Override
     public Item create(Item item) {
-        Item result = findAlcohol(item.getItemNumber());
+        Item result = findAlcohol(item.getItemNamer());
         if(result==null){
             mydb.add(item);
             return item;
@@ -29,9 +29,9 @@ public class ItemRep implements ItemInt {
 
     @Override
     public Item update(Item item) {
-        Item result = findAlcohol(item.getItemNumber());
+        Item result = findAlcohol(item.getItemNamer());
         if(result!=null){
-            delete(result.getItemNumber());
+            delete(result.getItemNamer());
             return create(item);
         }
         return null;
@@ -60,6 +60,12 @@ public class ItemRep implements ItemInt {
     public ArrayList<Item> readAll() {
         return mydb;
     }
+    public Item getItem(String itemName){
+        return mydb.stream()
+                .filter(I ->I.getItemNamer().equalsIgnoreCase(itemName))
+                .findAny()
+                .orElse(null);
+    }
 
     @Override
     public int getItemNumber() {
@@ -67,7 +73,7 @@ public class ItemRep implements ItemInt {
     }
     public Item findAlcohol(String id){
         return mydb.stream()
-                .filter(C ->C.getItemNumber().equals(id))
+                .filter(C ->C.getItemNamer().equals(id))
                 .findAny()
                 .orElse(null);
     }

@@ -5,18 +5,18 @@ import domain.item.impl.beverage.beverage_Bridge.Beverage_Alcohol;
 public class AlcoholItem {
     private String id;
     private String item_id;
-    private String alcohol_id;
+    private String Beverage_id;
     private String description;
 
     private AlcoholItem() {
     }
 
-    public String getAlcohol_id() {
-        return alcohol_id;
+    public String getBeverage_id() {
+        return Beverage_id;
     }
 
-    public void setBeverage_id(String alcohol_id) {
-        this.alcohol_id = alcohol_id;
+    public void setBeverage_id(String Beverage_id) {
+        this.Beverage_id = Beverage_id;
     }
 
     public String getId() {
@@ -48,7 +48,7 @@ public class AlcoholItem {
         return "Beverage_Alcohol{" +
                 "id='" + id + '\'' +
                 ", item_id='" + item_id + '\'' +
-                ", beverage_id='" + alcohol_id + '\'' +
+                ", beverage_id='" + Beverage_id + '\'' +
                 ", description='" + description + '\'' +
                 '}';
     }
@@ -56,14 +56,14 @@ public class AlcoholItem {
     public static class Builder{
         private String id;
         private String item_id;
-        private String alcohol_id;
+        private String Beverage_id;
         private String description;
 
         public Builder(String id){
             this.id=id;
         }
-        public Builder buildAlcoholId(String alcohol_id){
-            this.alcohol_id=alcohol_id;
+        public Builder buildBeverage_id(String Beverage_id){
+            this.Beverage_id=Beverage_id;
             return this;
         }
         public Builder buildItem_id(String item_id){
@@ -78,7 +78,7 @@ public class AlcoholItem {
             AlcoholItem b=new AlcoholItem();
             b.description= this.description;
             b.id=this.id;
-            b.alcohol_id=this.alcohol_id;
+            b.Beverage_id=this.Beverage_id;
             b.item_id=this.item_id;
             return b;
         }

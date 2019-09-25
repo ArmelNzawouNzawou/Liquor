@@ -2,7 +2,7 @@ package domain.item.impl.ItemBridge;
 
 public class Item_beverage {
     private String id;
-    private String item_id;
+    private String item_Branch;
     private String classic_id;
     private String description;
 
@@ -16,12 +16,12 @@ public class Item_beverage {
         this.id = id;
     }
 
-    public String getItem_id() {
-        return item_id;
+    public String getItem_Branch() {
+        return item_Branch;
     }
 
-    public void setItem_id(String item_id) {
-        this.item_id = item_id;
+    public void setItem_Branch(String item_Branch) {
+        this.item_Branch = item_Branch;
     }
 
     public String getBeverage_id() {
@@ -39,17 +39,28 @@ public class Item_beverage {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    @Override
+    public String toString() {
+        return "Item_beverage{" +
+                "id='" + id + '\'' +
+                ", item_Branch='" + item_Branch + '\'' +
+                ", classic_id='" + classic_id + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
+
     public static class Builder{
         private String id;
-        private String item_id;
+        private String item_Branch;
         private String classic_id;
         private String description;
 
         public Builder(String id){
             this.id= id;
         }
-        public Builder buildItemId(String item_id){
-            this.item_id=item_id;
+        public Builder buildItem_Branch(String item_Branch){
+            this.item_Branch=item_Branch;
             return this;
         }
         public Builder buildBeverage(String beverage_id){
@@ -65,7 +76,7 @@ public class Item_beverage {
             c.classic_id=this.classic_id;
             c.description=this.description;
             c.id=this.id;
-            c.item_id=this.item_id;
+            c.item_Branch=this.item_Branch;
             return c;
         }
     }
