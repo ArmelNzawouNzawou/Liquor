@@ -1,11 +1,20 @@
 package domain.users;
 
 public class Address {
+    private String userId;
     private String EmailAddress;
     private String Address;
     private String phoner_Number;
 
     private Address() {
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getEmailAddress() {
@@ -35,18 +44,24 @@ public class Address {
     @Override
     public String toString() {
         return "Address{" +
-                "EmailAddress='" + EmailAddress + '\'' +
+                "userId='" + userId + '\'' +
+                ", EmailAddress='" + EmailAddress + '\'' +
                 ", Address='" + Address + '\'' +
                 ", phoner_Number='" + phoner_Number + '\'' +
                 '}';
     }
+
     public static class Builder{
+        private String userId;
         private String emailAddress;
         private String address;
         private String phoner_Number;
-        public Builder(String emailAddress){
+        public Builder(String userId){
+            this.userId=userId;
+        }
+        public Builder buildEmail(String emailAddress){
             this.emailAddress=emailAddress;
-
+            return this;
         }
         public Builder buildAddress(String address){
             this.address=address;
@@ -58,6 +73,7 @@ public class Address {
         }
         public Address build(){
             Address address=new Address();
+            address.userId=this.userId;
             address.Address=this.address;
             address.EmailAddress=this.emailAddress;
             address.phoner_Number=this.phoner_Number;

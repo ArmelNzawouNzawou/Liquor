@@ -1,21 +1,22 @@
 package domain.bridge;
 
 import domain.cashierBuilderPack.Cashier;
+import domain.customerBuilder.Customer;
 import domain.users.Address;
 
 public class Customer_address {
-    private Cashier cashier;
+    private Customer customer;
     private Address address;
 
     private Customer_address() {
     }
 
-    public Cashier getCashier() {
-        return cashier;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setCashier(Cashier cashier) {
-        this.cashier = cashier;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     public Address getAddress() {
@@ -26,11 +27,11 @@ public class Customer_address {
         this.address = address;
     }
     public static class Builder{
-        private Cashier cashier;
+        private Customer customer;
         private Address address;
 
-        public Builder(Cashier cashier){
-            this.cashier=cashier;
+        public Builder(Customer customer){
+            this.customer=customer;
         }
         public Builder buildAdress(Address address){
             this.address=address;
@@ -39,8 +40,15 @@ public class Customer_address {
         public Customer_address build(){
             Customer_address cash =new Customer_address();
             cash.address=this.address;
-            cash.cashier=this.cashier;
+            cash.customer=this.customer;
             return cash;
         }
     }
+
+
+
+
+
+
+
 }
