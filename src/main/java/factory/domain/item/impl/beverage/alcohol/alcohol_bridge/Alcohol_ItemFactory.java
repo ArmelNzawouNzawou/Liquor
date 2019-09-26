@@ -4,9 +4,17 @@ import domain.item.impl.beverage.alcohol.alcoholBridge.AlcoholItem;
 import util.IdGenerator;
 
 public class Alcohol_ItemFactory {
-    public static AlcoholItem getAlcoholItem(String item_id, String alcohol_id,String description){
+    public static AlcoholItem getAlcoholItem(String item_id, String Beverage_id,String description){
         return new AlcoholItem.Builder(IdGenerator.getSuffixFromClassName(AlcoholItem.class))
-                .buildAlcoholId(alcohol_id)
+                .buildBeverage_id(Beverage_id)
+                .buildDescription(description)
+                .buildItem_id(item_id)
+                .build();
+
+    }
+    public static AlcoholItem updateAlcoholItem(String id,String item_id, String Beverage_id,String description){
+        return new AlcoholItem.Builder(id)
+                .buildBeverage_id(Beverage_id)
                 .buildDescription(description)
                 .buildItem_id(item_id)
                 .build();

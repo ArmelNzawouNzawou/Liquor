@@ -45,4 +45,7 @@ public class ItemService implements ItemInt {
     public ArrayList<Item> readAlll() {
         return itemR.readAll();
     }
+    public Item getItem(String itemName){
+        return itemR.getItem(itemName);
+    }
 }

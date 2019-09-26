@@ -2,18 +2,18 @@ package domain.item.impl.beverage;
 
 public class Beverage {
     private String bev_id;
-    private String category;
+    private String bevName;
     private String item_id;
 
     private Beverage() {
     }
 
-    public String getCategory() {
-        return category;
+    public String getBevName() {
+        return bevName;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setBevName(String bevName) {
+        this.bevName = bevName;
     }
 
     public String getBev_id() {
@@ -36,7 +36,7 @@ public class Beverage {
     public String toString() {
         return "Beverage{" +
                 "bev_id='" + bev_id + '\'' +
-                ", category='" + category + '\'' +
+                ", category='" + bevName + '\'' +
                 ", item_id='" + item_id + '\'' +
                 '}';
     }
@@ -44,14 +44,14 @@ public class Beverage {
     public static class Builder{
         private String bev_id;
         private String item_id;
-        private String category;
+        private String bevName;
 
         public Builder(String bev_id){
             this.bev_id=bev_id;
 
         }
-        public Builder builCategory(String category){
-            this.category=category;
+        public Builder builBevName(String bevName){
+            this.bevName=bevName;
             return this;
         }
 
@@ -63,7 +63,7 @@ public class Beverage {
             Beverage beverage=new Beverage();
             beverage.bev_id=this.bev_id;
             beverage.item_id=this.item_id;
-            beverage.category=this.category;
+            beverage.bevName=this.bevName;
             return beverage;
         }
     }

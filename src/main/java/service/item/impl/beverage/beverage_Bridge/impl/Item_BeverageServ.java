@@ -3,11 +3,12 @@ package service.item.impl.beverage.beverage_Bridge.impl;
 import domain.item.impl.ItemBridge.Item_beverage;
 import factory.domain.item.itemBridge.Item_beverageFactory;
 import factory.repository.item.impl.item_beverage.Item_BeverageRepFac;
+import org.springframework.stereotype.Component;
 import repository.item.impl.beverage.beverage_Bridge.impl.Item_BeverageRepo;
 import service.item.impl.beverage.beverage_Bridge.Beverage_ItemInt;
 
 import java.util.ArrayList;
-
+@Component
 public class Item_BeverageServ implements Beverage_ItemInt {
     public static Item_BeverageServ item_beverageRepo;
     private ArrayList<Item_beverage>mydb=new ArrayList<>();

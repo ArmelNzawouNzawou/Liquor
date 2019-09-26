@@ -2,7 +2,7 @@ package domain.item.impl.classic.classicBridge;
 
 public class ClassicItem {
     private String id;
-    private String item_id;
+    private String item_Name;
     private String classic_id;
     private String description;
 
@@ -25,12 +25,12 @@ public class ClassicItem {
         this.id = id;
     }
 
-    public String getItem_id() {
-        return item_id;
+    public String getItem_Name() {
+        return item_Name;
     }
 
-    public void setItem_id(String item_id) {
-        this.item_id = item_id;
+    public void setItem_Name(String item_Name) {
+        this.item_Name = item_Name;
     }
 
     public String getDescription() {
@@ -45,7 +45,7 @@ public class ClassicItem {
     public String toString() {
         return "Beverage_Alcohol{" +
                 "id='" + id + '\'' +
-                ", item_id='" + item_id + '\'' +
+                ", item_id='" + item_Name + '\'' +
                 ", beverage_id='" + classic_id + '\'' +
                 ", description='" + description + '\'' +
                 '}';
@@ -53,7 +53,7 @@ public class ClassicItem {
 
     public static class Builder{
         private String id;
-        private String item_id;
+        private String item_Name;
         private String classic_id;
         private String description;
 
@@ -64,8 +64,8 @@ public class ClassicItem {
             this.classic_id=classic_id;
             return this;
         }
-        public Builder buildItem_id(String item_id){
-            this.item_id=item_id;
+        public Builder buildItem_Name(String item_Name){
+            this.item_Name=item_Name;
             return this;
         }
         public Builder buildDescription(String description){
@@ -77,7 +77,7 @@ public class ClassicItem {
             b.description =this.description;
             b.id=this.id;
             b.classic_id=this.classic_id;
-            b.item_id=this.item_id;
+            b.item_Name=this.item_Name;
             return b;
         }
     }

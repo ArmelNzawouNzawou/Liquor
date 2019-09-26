@@ -40,6 +40,9 @@ private BeverageRep bv = BeverageRepFactory.getBeverageRep();
     public Beverage read(String id) {
         return bv.read(id);
     }
+    public Beverage getBev(String name){
+        return bv.getBev(name);
+    }
 
     @Override
     public ArrayList<Beverage> readAlll() {

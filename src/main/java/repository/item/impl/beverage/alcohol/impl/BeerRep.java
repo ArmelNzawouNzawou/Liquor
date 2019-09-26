@@ -1,6 +1,7 @@
 package repository.item.impl.beverage.alcohol.impl;
 
 import domain.item.impl.beverage.alcohol.impl.Beer;
+import factory.domain.item.impl.beverage.alcohol.impl.BeerFactory;
 import repository.item.impl.beverage.alcohol.BeerInt;
 
 import java.sql.Connection;
