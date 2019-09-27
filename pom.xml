@@ -12,7 +12,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.1.4.RELEASE</version>
-        <!-- lookup parent from com.repository -->
+        <!-- lookup parent from com.company.com.repository -->
     </parent>
 
 
