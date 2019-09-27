@@ -5,9 +5,10 @@ import company.com.util.IdGenerator;
 
 public class BeerFactory {
 
-public static Beer getBeer( String name,String size,double price){
+public static Beer getBeer( String name,String size,double price,int quantity){
     return new Beer.Builder(IdGenerator.getSuffixFromClassName(Beer.class))
             .buildPrice(price)
+            .buildQuantity(quantity)
             .buildSize(size)
             .buildName(name)
             .build();

@@ -36,7 +36,7 @@ public class BeerRep implements BeerInt {
     public Beer create(Beer beer) {
     Beer result = findBeer(beer.getId());
     if(result==null&&beer!=null){
-        Beer b= BeerFactory.getBeer(beer.getName(),beer.getSize(),beer.getPrice());
+        Beer b= BeerFactory.getBeer(beer.getName(),beer.getSize(),beer.getPrice(),beer.getQuantity());
     mydb.add(b);
     return b;
 }return null;
@@ -62,6 +62,13 @@ public class BeerRep implements BeerInt {
     public Beer read(String s) {
         Beer result = findBeer(s);
         if(result!=null){return result;}return null;
+    }
+    public void selItem(String id,int numberTosell){
+        Beer result = findBeer(id);
+        if(result!=null&&result.getQuantity()>=numberTosell){
+        Beer updat =BeerFactory.getBeer(result.getName(),result.getSize(),result.getPrice(),result.getQuantity()-numberTosell);
+            update(updat);
+        }
     }
 
     @Override

@@ -13,7 +13,7 @@ import company.com.service.customerServ.impl.CustomerService;
 
 import java.util.ArrayList;
 @RestController
-@RequestMapping("/customer")
+@RequestMapping("LDS/customer")
 public class CustomerController  {
 
     @Autowired

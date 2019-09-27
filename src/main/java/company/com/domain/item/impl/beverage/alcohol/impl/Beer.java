@@ -5,8 +5,17 @@ public class Beer {
     private String name;
     private double price;
     private String size;
+    private int quantity;
 
     private Beer() {
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public double getPrice() {
@@ -48,6 +57,7 @@ public class Beer {
                 ", name='" + name + '\'' +
                 ", price=" + price +
                 ", size='" + size + '\'' +
+                ", quantity='" + quantity + '\'' +
                 '}';
     }
 
@@ -56,6 +66,7 @@ public class Beer {
         private String name;
         private double price;
         private String size;
+        private int quantity;
 
         public Builder(String id){
             this.id=id;
@@ -68,6 +79,10 @@ public class Beer {
             this.size=size;
             return this;
         }
+        public Builder buildQuantity(int quantity){
+            this.quantity=quantity;
+            return this;
+        }
         public Builder buildName(String name){
             this.name=name;
             return this;
@@ -78,6 +93,7 @@ public class Beer {
             beer.name=this.name;
             beer.price=this.price;
             beer.size=this.size;
+            beer.quantity=this.quantity;
             return beer;
         }
     }

@@ -7,7 +7,7 @@ import company.com.service.Cashier.impl.CashierServicer;
 
 import java.util.ArrayList;
 @RestController
-@RequestMapping("/cashier")
+@RequestMapping("LDS/cashier")
 public class CashierController implements ControllerInt<Cashier,String> {
     @Autowired
     private CashierServicer cashierServicer;

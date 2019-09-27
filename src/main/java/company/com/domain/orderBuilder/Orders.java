@@ -4,10 +4,20 @@ package company.com.domain.orderBuilder;
 /***this is the product class*/
 public class Orders {
     private String orderNumeber;
-    private boolean orderCompleted;
+    private String customerNumber;
+    private String orderTime;
     private String comment;
 
+    private Orders() {
+    }
 
+    public String getCustomerNumber() {
+        return customerNumber;
+    }
+
+    public void setCustomerNumber(String customerNumber) {
+        this.customerNumber = customerNumber;
+    }
 
     public String getComment() {
         return comment;
@@ -25,33 +35,42 @@ public class Orders {
         this.orderNumeber = orderNumeber;
     }
 
-    public boolean isOrderCompleted() {
-        return orderCompleted;
+    public String isOrderTime() {
+        return orderTime;
     }
 
-    public void setOrderCompleted(boolean orderCompleted) {
-        this.orderCompleted = orderCompleted;
+    public void setOrderTime(String orderCompleted) {
+        this.orderTime = orderCompleted;
     }
 
 
     @Override
     public String toString() {
-        return  "   Orders\n   -------" +
-                "\n orderNumeber:        " + orderNumeber +
-                "\n orderCompleted:     " + orderCompleted ;
-
+        return "Orders{" +
+                "orderNumeber='" + orderNumeber + '\'' +
+                ", customerNumber='" + customerNumber + '\'' +
+                ", orderTime='" + orderTime + '\'' +
+                ", comment='" + comment + '\'' +
+                '}';
     }
+
     public static class Builder {
         private String orderNumeber;
-        private boolean orderCompleted;
+        private String orderTime;
         private String comment;
+        private String customerNumber;
+
+        public Builder buildCustomer(String customerNumber){
+            this.customerNumber=customerNumber;
+            return this;
+        }
 
         public Builder(String orderNumeber) {
             this.orderNumeber = orderNumeber;
         }
 
-        public Builder buildOrderCompleted(boolean orderCompleted){
-            this.orderCompleted=orderCompleted;
+        public Builder buildOrderTime(String orderTime){
+            this.orderTime=orderTime;
             return this;
         }
 
@@ -64,7 +83,7 @@ public class Orders {
             Orders orders=new Orders();
             orders.orderNumeber=this.orderNumeber;
             orders.comment=this.comment;
-            orders.orderCompleted=this.orderCompleted;
+            orders.orderTime=this.orderTime;
             return orders;
         }
     }

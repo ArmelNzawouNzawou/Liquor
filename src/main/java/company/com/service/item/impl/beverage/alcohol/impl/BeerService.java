@@ -59,4 +59,7 @@ public class BeerService implements BeerInt {
     public ArrayList<Beer> readAlll() {
         return beerRep.readAll();
     }
+    public void selItem(String id,int number){
+        beerRep.selItem(id,number);
+    }
 }

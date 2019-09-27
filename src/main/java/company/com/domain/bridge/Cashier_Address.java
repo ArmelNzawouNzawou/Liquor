@@ -25,6 +25,9 @@ public class Cashier_Address {
     public void setAddress(Address address) {
         this.address = address;
     }
+
+
+
     public static class Builder{
         private Cashier cashier;
         private Address address;

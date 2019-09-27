@@ -20,4 +20,8 @@ public class AddressFactoryTest {
         System.out.println(address.toString());
 
     }
+
+    @Test
+    public void getAddress1() {
+    }
 }

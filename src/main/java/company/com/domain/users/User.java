@@ -4,10 +4,16 @@ public class User {
     private String id;
     private String Name;
     private String SurName;
+    private String UserType;
 
     private User() {
     }
-
+    public String getUserType() {
+        return UserType;
+    }
+    public void setUserType(String userType) {
+        UserType = userType;
+    }
     public String getId() {
         return id;
     }
@@ -38,12 +44,15 @@ public class User {
                 "id='" + id + '\'' +
                 ", Name='" + Name + '\'' +
                 ", SurName='" + SurName + '\'' +
+                ", UserType='" + UserType + '\'' +
                 '}';
     }
+
     public static class Builder{
         private String id;
         private String Name;
         private String SurName;
+        private String UserType;
         public Builder(String id) {
             this.id=id;
         }
@@ -53,6 +62,10 @@ public class User {
         }
         public Builder buildSuName(String surName){
             this.SurName=surName;
+            return this;
+        }
+        public Builder buildUserTpe(String userType){
+            this.UserType=userType;
             return this;
         }
         public User build(){
