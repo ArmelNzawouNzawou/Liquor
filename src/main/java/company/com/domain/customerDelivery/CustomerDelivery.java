@@ -4,21 +4,12 @@ import java.util.ArrayList;
 
 public class CustomerDelivery {
     private String OrderId;
-    private ArrayList<String> itemID;
     private String customerNumber;
     private String orderTime;
     private String comment;
-    private ArrayList<Integer> quatity;
+    //private String itemNumber
 
     private CustomerDelivery() {
-    }
-
-    public ArrayList<Integer> getQuatity() {
-        return quatity;
-    }
-
-    public void setQuatity(ArrayList<Integer> quatity) {
-        this.quatity = quatity;
     }
 
     public String getOrderId() {
@@ -29,13 +20,6 @@ public class CustomerDelivery {
         OrderId = orderId;
     }
 
-    public ArrayList<String> getItemID() {
-        return itemID;
-    }
-
-    public void setItemID(ArrayList<String> itemID) {
-        this.itemID = itemID;
-    }
 
     public String getCustomerNumber() {
         return customerNumber;
@@ -65,22 +49,16 @@ public class CustomerDelivery {
     public String toString() {
         return "CustomerDelivery{" +
                 "OrderId='" + OrderId + '\'' +
-                ", itemID=" + itemID +
                 ", customerNumber='" + customerNumber + '\'' +
                 ", orderTime='" + orderTime + '\'' +
                 ", comment='" + comment + '\'' +
-                ", quatity='" + quatity + '\'' +
                 '}';
     }
-
     public static class Builder{
         private String OrderId;
-        private ArrayList<String> itemID;
         private String customerNumber;
         private String orderTime;
         private String comment;
-        private ArrayList<Integer> quatity;
-
         public Builder(String customerNumber){
             this.customerNumber=customerNumber;
         }
@@ -96,19 +74,11 @@ public class CustomerDelivery {
             this.comment=comment;
             return this;
         }
-        public Builder buildItemId(ArrayList<String> itemID){
-            this.itemID=itemID;
-            return this;
-        }
-        public Builder buildQuantity(ArrayList<Integer> quatity){
-            this.quatity=quatity;
-            return this;
-        }
+
         public CustomerDelivery build(){
             CustomerDelivery cust=new CustomerDelivery();
             cust.comment=this.comment;
             cust.customerNumber=this.customerNumber;
-            cust.itemID=this.itemID;
             cust.OrderId=this.OrderId;
             cust.orderTime=this.orderTime;
             return cust;

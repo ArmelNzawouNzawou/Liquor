@@ -40,7 +40,7 @@ public class CustomerPayRep implements CustomerPayInt {
     @Override
     public void delete(String s) {
 
-        CustomerPay result=findCustomerPay(s);
+        CustomerPay result=findOrder(s);
         if(result!=null){
            mydb.remove(result);
         }
@@ -54,6 +54,13 @@ public class CustomerPayRep implements CustomerPayInt {
         }
         return null;
     }
+    public CustomerPay findOrder(String orderNumber){
+        return mydb.stream()
+                .filter(C ->C.getOrderNumber().equals(orderNumber))
+                .findAny()
+                .orElse(null);
+    }
+
 
     @Override
     public ArrayList<CustomerPay> readAll() {

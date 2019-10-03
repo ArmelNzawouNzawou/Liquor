@@ -17,12 +17,12 @@ import company.com.service.payment.customerPay.impl.CustomerPayService;
 
 import java.util.ArrayList;
 
-/**
+/**A VERIFIER
  * this class will give the frontend to choose either the customer can create a cash ,or card payment.
  */
 @RestController
 @RequestMapping("/customer/payment")
-public class CustomerPayController implements ControllerInt<CustomerPaymentBridge,String> {
+public class CustomerPayController  {
     private CustomerPaymentBridge custo;
     @Autowired
     private CustomerPayService customerPayService;
@@ -33,54 +33,36 @@ public class CustomerPayController implements ControllerInt<CustomerPaymentBridg
 
 
     @PostMapping("/create")
-    @Override
     public CustomerPaymentBridge create(@RequestBody CustomerPaymentBridge cp) {
         CustomerPay customerPay=null;
+        String pay=null;
         //ResponseObj responseObj = ResponseObjFactory.buildGenericResponseObj(HttpStatus.OK.toString(), "CustomerPaymentBridge created!");
 
         if(cp.getPayType().equals("card")){
-        //    responseObj.setResponseDescription("Card Payment");
             Card card= CardFactory.getCard(cp.getCustomerNumber(),cp.getBankName(),cp.getPaymentDetaild(),cp.getAmount(),cp.getPayment_id(),cp.getArrengement_id()) ;
             customerPay= CustomerPayFactory.getCustomerPay(cp.getCustomerNumber(),cp.getOrderNumber(),cp.getArrengement_id(),cp.getPayType());
-            Cash cash= CashFactory.getCash("xxx","xxx",0,"xx","xxxx");
-
-            CustomerPay customerPay_result=createCustomer(customerPay);
-            cashService.create(cash);
-
-            return cp;
+            pay= card.toString();
 
         }else if(cp.getPayType().equals("cash")){
-         //   responseObj.setResponseDescription("cash Payment");
-           // Card card= CardFactory.getCard("xxx","xxxx","xxxx",0.00,"xxxx","xxx") ;
+
             customerPay= CustomerPayFactory.getCustomerPay(cp.getCustomerNumber(),cp.getOrderNumber(),cp.getArrengement_id(),cp.getPayType());
             Cash cash= CashFactory.getCash(cp.getCustomerNumber(),cp.getOrderNumber(),cp.getAmount(),cp.getPayment_id(),cp.getArrengement_id());
 
             cashService.create(cash);
-            createCustomer(customerPay);
-
-            return cp;
-        } else return null;
-/**
-        Cash cash= CashFactory.getCash(cp.getCustomerNumber(),cp.getOrderNumber(),cp.getAmount(),cp.getPayment_id(),cp.getArrengement_id());
-        Card card= CardFactory.getCard(cp.getCustomerNumber(),cp.getBankName(),cp.getPaymentDetaild(),cp.getAmount(),cp.getPayment_id(),cp.getArrengement_id()) ;
-        CustomerPay customerPay= CustomerPayFactory.getCustomerPay(cp.getCustomerNumber(),cp.getOrderNumber(),cp.getArrengement_id(),cp.getPayType());
-
-        customerPayService.create(customerPay);
-        cardRepService.create(card);
-        cashService.create(cash);
-        return null;
- **/
+            pay= cash.toString();
+        }
+        CustomerPaymentBridge CPB=CustomerPaymentBridgeFactory.getCustomerPaymentBridge(cp.getCustomerNumber(),cp.getOrderNumber(),cp.getAmount(),customerPay.getPayId(),"NONE",cp.getPayType(),"",pay);
+         return CPB;
     }
 
     /**
-     * the id here for now is the customer number
-     * @param id
+     * the id here for now is the orderNuber number
+     * @param orderNumber
      * @return
      */
     @GetMapping("/read")
-    @Override
-    public CustomerPaymentBridge read(@RequestParam(value = "id") String id) {
-        CustomerPay cust=customerPayService.read(id);
+    public CustomerPaymentBridge read(@RequestParam(value = "orderNumber")String orderNumber) {
+        CustomerPay cust=customerPayService.findOrder(orderNumber);
         if(cust.getPayType().equalsIgnoreCase("cash"))
         {
             Cash cash=cashService.read(cust.getPayId());
@@ -88,7 +70,7 @@ public class CustomerPayController implements ControllerInt<CustomerPaymentBridg
             return toreturn;
         }else  if(cust.getPayType().equalsIgnoreCase("card"))
         {
-            Card card=cardRepService.read(id);
+            Card card=cardRepService.read(orderNumber);
             CustomerPaymentBridge toreturn=CustomerPaymentBridgeFactory.getCustomerPaymentBridge(cust.getCustomerNumber(),cust.getOrderNumber(),card.getAmount(),cust.getPayId(),card.getArrengement_id(),cust.getPayType(),card.getBankName(),card.getPaymentDetaild());
             return toreturn;
         }
@@ -96,7 +78,6 @@ public class CustomerPayController implements ControllerInt<CustomerPaymentBridg
     }
 
     @GetMapping("/delete")
-    @Override
     public void delete(@RequestParam(value = "id") String id) {
        /*** CustomerPay cust=customerPayService.read(id);
         if(cust.getPayType().equalsIgnoreCase("cash"))
@@ -117,13 +98,11 @@ public class CustomerPayController implements ControllerInt<CustomerPaymentBridg
     }
 
     @PostMapping("/update")
-    @Override
     public CustomerPaymentBridge update(@RequestBody CustomerPaymentBridge customerPaymentBridge) {
         return null;
     }
 
     @GetMapping("reads")
-    @Override
     public ArrayList<CustomerPaymentBridge> readAll() {
 
         return null;

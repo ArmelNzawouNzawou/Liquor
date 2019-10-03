@@ -1,12 +1,26 @@
 package company.com.domain.customerPayment;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class CustomerPay {
+    @Id
+    private String payId;
     private String customerNumber;
     private String orderNumber;
-    private String payId;
     private String payType;
+    private String Description;
 
     private CustomerPay() {
+    }
+
+    public String getDescription() {
+        return Description;
+    }
+
+    public void setDescription(String description) {
+        Description = description;
     }
 
     public String getCustomerNumber() {
@@ -55,12 +69,18 @@ public class CustomerPay {
         private String orderNumber;
         private String payId;
         private String payType;
+        private String Description;
+
 
         public Builder(String customerNumber) {
             this.customerNumber = customerNumber;
         }
         public Builder buildOrderNumber(String orderNumber){
             this.orderNumber=orderNumber;
+            return this;
+        }
+        public Builder buildDescription(String description){
+            this.Description=description;
             return this;
         }
         public Builder buildPayId(String payId){
@@ -77,6 +97,7 @@ public class CustomerPay {
             cust.orderNumber=this.orderNumber;
             cust.payId=this.payId;
             cust.payType=this.payType;
+            cust.Description=this.Description;
             return cust;
         }
     }

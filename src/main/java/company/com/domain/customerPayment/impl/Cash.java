@@ -52,13 +52,12 @@ public class Cash {
 
     @Override
     public String toString() {
-        return "Cash{" +
-                "customerNumber='" + customerNumber + '\'' +
-                ", orderNumber='" + orderNumber + '\'' +
-                ", amount=" + amount +
-                ", payment_type='" + payment_id + '\'' +
-                ", arrengement_id='" + arrengement_id + '\'' +
-                '}';
+        return  "  Cash" +
+                "\ncustomerNumber:   " + customerNumber +
+                "\norderNumber:      " + orderNumber +
+                "\namount:           " + amount +
+                "\npayment_type:     " + payment_id +
+                "\narrengement_id:   " + arrengement_id ;
     }
     public static class Builder{
         private String customerNumber;

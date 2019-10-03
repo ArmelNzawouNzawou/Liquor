@@ -61,14 +61,13 @@ public class Card {
 
     @Override
     public String toString() {
-        return "Card{" +
-                "customerNumber='" + customerNumber + '\'' +
-                ", bankName='" + bankName + '\'' +
-                ", paymentDetaild='" + paymentDetaild + '\'' +
-                ", amount=" + amount +
-                ", payment_id='" + payment_id + '\'' +
-                ", arrengement_id='" + arrengement_id + '\'' +
-                '}';
+        return  "Card Payment" +
+                "\ncustomerNumber: " + customerNumber +
+                "\nbankName:       " + bankName +
+                "\npaymentDetaild: " + paymentDetaild +
+                "\namount:         " + amount +
+                "\npayment_id:     " + payment_id +
+                "\narrengement_id: " + arrengement_id;
     }
 
     public static class Builder{

@@ -27,7 +27,6 @@ public class CashierController implements ControllerInt<Cashier,String> {
     @GetMapping("/delete")
     @Override
     public void delete(@RequestParam(value = "id") String id) {
-
     }
 
     @PostMapping("/update")

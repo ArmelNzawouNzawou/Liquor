@@ -39,6 +39,9 @@ public class CustomerPayService implements CustomerPayInt {
     public CustomerPay read(String id) {
         return customerPayRep.read(id);
     }
+    public CustomerPay findOrder(String orderNumber){
+        return customerPayRep.findOrder(orderNumber);
+    }
 
     @Override
     public ArrayList<CustomerPay> readAlll() {

@@ -51,7 +51,6 @@ public class LDS_Security extends WebSecurityConfigurerAdapter {
                 .and()
                 .csrf().disable()
                 .formLogin().disable();
-
         http.httpBasic()
                 .and()
                 .authorizeRequests()

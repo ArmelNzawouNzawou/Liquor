@@ -1,9 +1,15 @@
 package company.com.domain.customerBuilder;
 
-    public class Customer {
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
+public class Customer {
+    @Id
+    private String customer_number;
     private String name;
     private String SurName;
-    private String customer_number;
+
 
     private Customer() {
 
@@ -16,7 +22,6 @@ package company.com.domain.customerBuilder;
     public void setCustomer_number(String customer_number) {
         this.customer_number = customer_number;
     }
-
 
 
     public String getName() {
@@ -41,7 +46,7 @@ package company.com.domain.customerBuilder;
         return "CustomerProduct" +
                 "\ncustomer numb:" + customer_number +
                 "\nname:         " + name +
-                "\nSurName:      " + SurName ;
+                "\nSurName:      " + SurName;
 
     }
 
@@ -49,6 +54,11 @@ package company.com.domain.customerBuilder;
         private String name;
         private String surName;
         private String customer_number;
+
+        public Builder(String customer_number) {
+            this.customer_number = customer_number;
+
+        }
 
         public Builder buildName(String name) {
             this.name = name;
@@ -58,11 +68,6 @@ package company.com.domain.customerBuilder;
         public Builder buildSurname(String surName) {
             this.surName = surName;
             return this;
-        }
-
-        public Builder (String customer_number) {
-            this.customer_number = customer_number;
-
         }
 
         public Customer build() {
