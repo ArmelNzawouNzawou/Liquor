@@ -1,6 +1,7 @@
-package company.com.repository.customer;
+package company.com.repository.customer.impl;
 
 import company.com.domain.customerBuilder.Customer;
+import company.com.repository.customer.CustomerRep;
 
 import java.util.ArrayList;
 
@@ -26,7 +27,7 @@ public class CustomerRepository implements CustomerRep
 
     @Override
     public Customer create(Customer cust) {
-        Customer result = findCustomer(cust.getCustomer_number());
+        Customer result = findCustomer(cust.getEmail());
         if(result==null){
             mydb.add(result);
             return result;
@@ -35,9 +36,9 @@ public class CustomerRepository implements CustomerRep
 
     @Override
     public Customer update(Customer cust) {
-        Customer result = findCustomer(cust.getCustomer_number());
+        Customer result = findCustomer(cust.getEmail());
         if(result!=null){
-           delete(result.getCustomer_number());
+           delete(result.getEmail());
             return create(cust);
         }return null;
 
@@ -64,7 +65,7 @@ public class CustomerRepository implements CustomerRep
 
     public Customer findCustomer(String id){
         return mydb.stream()
-                .filter(C -> C.getCustomer_number().equals(id))
+                .filter(C -> C.getEmail().equals(id))
                 .findAny()
                 .orElse(null);
     }

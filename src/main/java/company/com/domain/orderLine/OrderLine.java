@@ -1,6 +1,11 @@
 package company.com.domain.orderLine;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class OrderLine {
+    @Id
     private String lineId;
     private String OrderId;
     private String itemID;

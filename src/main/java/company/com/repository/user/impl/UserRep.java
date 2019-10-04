@@ -22,7 +22,7 @@ public class UserRep implements UserInt {
     }
     @Override
     public User create(User user) {
-        User result=findUser(user.getId());
+        User result=findUser(user.getEmail());
         if(result==null){
             mydb.add(user);
             return user;
@@ -31,9 +31,9 @@ public class UserRep implements UserInt {
 
     @Override
     public User update(User user) {
-        User result=findUser(user.getId());
+        User result=findUser(user.getEmail());
         if(result!=null){
-           delete(result.getId());
+           delete(result.getEmail());
             return create(user);
         }return null;
     }
@@ -62,7 +62,7 @@ public class UserRep implements UserInt {
 
     public User findUser(String id){
         return mydb.stream()
-                .filter(C ->C.getId().equals(id))
+                .filter(C ->C.getEmail().equals(id))
                 .findAny()
                 .orElse(null);
     }

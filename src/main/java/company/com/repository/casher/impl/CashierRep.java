@@ -42,7 +42,7 @@ public class CashierRep implements CahierInterface {
     @Override
     public Cashier create(Cashier cashierProduct) {
 
-        if(findCashier(cashierProduct.getId())==null){
+        if(findCashier(cashierProduct.getEmail())==null){
             mydb.add(cashierProduct);
             return cashierProduct;
         }return null;
@@ -64,9 +64,9 @@ public class CashierRep implements CahierInterface {
 
     @Override
     public Cashier update(Cashier cashierProduct) {
-        Cashier cashier=findCashier(cashierProduct.getId());
+        Cashier cashier=findCashier(cashierProduct.getEmail());
         if(cashier!=null){
-            delete(cashier.getId());
+            delete(cashier.getEmail());
            return create(cashierProduct);
         }return null;
 
@@ -160,7 +160,7 @@ public class CashierRep implements CahierInterface {
 
     public Cashier findCashier(String id){
         return mydb.stream()
-                .filter(c ->c.getId().equals(id))
+                .filter(c ->c.getEmail().equals(id))
                 .findAny()
                 .orElse(null);
     }

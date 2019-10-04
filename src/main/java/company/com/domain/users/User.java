@@ -1,78 +1,92 @@
 package company.com.domain.users;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class User {
-    private String id;
-    private String Name;
-    private String SurName;
+    @Id
+    private String email;
+    private String password;
     private String UserType;
+    private String description;
+
+
 
     private User() {
     }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public String getUserType() {
         return UserType;
     }
     public void setUserType(String userType) {
         UserType = userType;
     }
-    public String getId() {
-        return id;
+
+
+    public String getEmail() {
+        return email;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setEmail(String email) {
+        email = email;
     }
 
-    public String getName() {
-        return Name;
-    }
-
-    public void setName(String name) {
-        Name = name;
-    }
-
-    public String getSurName() {
-        return SurName;
-    }
-
-    public void setSurName(String surName) {
-        SurName = surName;
-    }
 
     @Override
     public String toString() {
         return "User{" +
-                "id='" + id + '\'' +
-                ", Name='" + Name + '\'' +
-                ", SurName='" + SurName + '\'' +
+                "id='" + email + '\'' +
+                ", Name='" + password + '\'' +
                 ", UserType='" + UserType + '\'' +
                 '}';
     }
 
     public static class Builder{
-        private String id;
-        private String Name;
-        private String SurName;
+        private String email;
+        private String password;
         private String UserType;
-        public Builder(String id) {
-            this.id=id;
-        }
-        public Builder buildName(String name){
-            this.Name=name;
+        private String description;
+
+        public Builder buildDescri(String description){
+            this.description=description;
             return this;
         }
-        public Builder buildSuName(String surName){
-            this.SurName=surName;
+        public Builder(String email) {
+            this.email=email;
+        }
+        public Builder buildPassword(String password){
+            this.password=password;
             return this;
         }
+
         public Builder buildUserTpe(String userType){
             this.UserType=userType;
             return this;
         }
+
         public User build(){
             User user=new User();
-            user.id=this.id;
-            user.Name=this.Name;
-            user.SurName=this.SurName;
+            user.email=this.email;
+            user.password=this.password;
+            user.UserType=this.UserType;
+            user.description=this.description;
             return user;
         }
     }

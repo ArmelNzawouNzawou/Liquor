@@ -2,7 +2,7 @@ package company.com.service.customerServ.impl;
 
 import company.com.domain.customerBuilder.Customer;
 import company.com.factory.repository.CustomerRepoFac;
-import company.com.repository.customer.CustomerRepository;
+import company.com.repository.customer.impl.CustomerRepository;
 import company.com.service.customerServ.CustomerServiceInt;
 import org.springframework.stereotype.Component;
 

@@ -6,7 +6,7 @@ import javax.persistence.Id;
 @Entity
 public class Customer {
     @Id
-    private String customer_number;
+    private String email;
     private String name;
     private String SurName;
 
@@ -15,12 +15,12 @@ public class Customer {
 
     }
 
-    public String getCustomer_number() {
-        return customer_number;
+    public String getEmail() {
+        return email;
     }
 
-    public void setCustomer_number(String customer_number) {
-        this.customer_number = customer_number;
+    public void setEmail(String customer_number) {
+        this.email = customer_number;
     }
 
 
@@ -44,7 +44,7 @@ public class Customer {
     @Override
     public String toString() {
         return "CustomerProduct" +
-                "\ncustomer numb:" + customer_number +
+                "\ncustomer numb:" + email +
                 "\nname:         " + name +
                 "\nSurName:      " + SurName;
 
@@ -53,10 +53,10 @@ public class Customer {
     public static class Builder {
         private String name;
         private String surName;
-        private String customer_number;
+        private String email;
 
-        public Builder(String customer_number) {
-            this.customer_number = customer_number;
+        public Builder(String email) {
+            this.email = email;
 
         }
 
@@ -72,7 +72,7 @@ public class Customer {
 
         public Customer build() {
             Customer customerProduct = new Customer();
-            customerProduct.customer_number = customer_number;
+            customerProduct.email = email;
             customerProduct.name = name;
             customerProduct.SurName = surName;
             return customerProduct;

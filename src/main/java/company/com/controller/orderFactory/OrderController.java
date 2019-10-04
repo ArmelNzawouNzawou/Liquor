@@ -26,16 +26,16 @@ public class OrderController implements ControllerInt<Orders,String> {
     @GetMapping("/delete")
     @Override
     public void delete(@RequestParam(value = "id")String id) {
-
+        orderServices.delete(id);
     }
     @PostMapping("/update")
     @Override
     public Orders update(@RequestBody Orders order) {
-        return null;
+        return orderServices.update(order);
     }
     @GetMapping("/reads")
     @Override
     public ArrayList<Orders> readAll() {
-        return null;
+        return orderServices.readAlll();
     }
 }

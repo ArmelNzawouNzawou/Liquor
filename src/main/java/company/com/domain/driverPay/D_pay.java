@@ -1,12 +1,18 @@
 package company.com.domain.driverPay;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class D_pay {
+    @Id
+    private String payCode;
     private int rate;
     private double salary;
     private String payType;
     private String driverBumber;
     private String payDate;
-    private String payCode;
+
 
     public D_pay() {
     }

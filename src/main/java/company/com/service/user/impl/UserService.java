@@ -1,6 +1,8 @@
 package company.com.service.user.impl;
 
 import company.com.domain.users.User;
+import company.com.factory.repository.UserRepFactory;
+import company.com.repository.user.impl.UserRep;
 import company.com.service.user.UserServiceInt;
 import org.springframework.stereotype.Component;
 import java.util.ArrayList;
@@ -8,6 +10,7 @@ import java.util.ArrayList;
 @Component
 public class UserService implements UserServiceInt {
     private static UserService userService;
+    private UserRep userRep=UserRepFactory.getUserRep();
 
     private UserService() {
     }
@@ -19,26 +22,26 @@ public class UserService implements UserServiceInt {
 
     @Override
     public User create(User user) {
-        return userService.create(user);
+        return userRep.create(user);
     }
 
     @Override
     public User update(User user) {
-        return userService.update(user);
+        return userRep.update(user);
     }
 
     @Override
     public void delete(String id) {
-        userService.delete(id);
+        userRep.delete(id);
     }
 
     @Override
     public User read(String id) {
-        return userService.read(id);
+        return userRep.read(id);
     }
 
     @Override
     public ArrayList<User> readAlll() {
-        return userService.readAlll();
+        return userRep.readAll();
     }
 }

@@ -1,12 +1,26 @@
 package company.com.domain.orderTiming;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class OrderTiming {
+    @Id
     private String OrderNumber;
     private String timeOfPlacing;
     private String timeOfPickUp;
     private String timeOfComplition;
+    private String description;
 
     private OrderTiming() {
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getOrderNumber() {
@@ -40,16 +54,34 @@ public class OrderTiming {
     public void setTimeOfComplition(String timeOfComplition) {
         this.timeOfComplition = timeOfComplition;
     }
+
+    @Override
+    public String toString() {
+        return "OrderTiming{" +
+                "OrderNumber='" + OrderNumber + '\'' +
+                ", timeOfPlacing='" + timeOfPlacing + '\'' +
+                ", timeOfPickUp='" + timeOfPickUp + '\'' +
+                ", timeOfComplition='" + timeOfComplition + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
+
     public static class Builder{
         private String OrderNumber;
         private String timeOfPlacing;
         private String timeOfPickUp;
         private String timeOfComplition;
+        private String description;
+
         public Builder(String orderNumber){
             this.OrderNumber=orderNumber;
         }
         public Builder buildTPlacing(String timeOfPlacing){
             this.timeOfPlacing=timeOfPlacing;
+            return this;
+        }
+        public Builder buildDescription(String description){
+            this.description=description;
             return this;
         }
         public Builder buildTPickUp(String timeOfPickUp){
@@ -66,6 +98,7 @@ public class OrderTiming {
             orderTiming.timeOfComplition=this.timeOfComplition;
             orderTiming.timeOfPlacing=this.timeOfPlacing;
             orderTiming.timeOfPickUp=this.timeOfPickUp;
+            orderTiming.description=this.description;
             return orderTiming;
         }
     }

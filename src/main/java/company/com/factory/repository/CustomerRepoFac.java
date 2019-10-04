@@ -1,7 +1,7 @@
 package company.com.factory.repository;
 
 
-import company.com.repository.customer.CustomerRepository;
+import company.com.repository.customer.impl.CustomerRepository;
 
 public class CustomerRepoFac {
 
