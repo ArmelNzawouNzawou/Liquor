@@ -5,7 +5,7 @@ import company.com.repository.customer.CustomerRep;
 
 import java.util.ArrayList;
 
-public class CustomerRepository implements CustomerRep
+public class CustomerRepository{}/** implements CustomerRep
 {
     private int highValeu;
     private static CustomerRepository rep =null;
@@ -73,3 +73,4 @@ public class CustomerRepository implements CustomerRep
 
 
 }
+*/

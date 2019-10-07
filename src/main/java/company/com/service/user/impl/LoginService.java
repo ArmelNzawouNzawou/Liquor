@@ -2,13 +2,20 @@ package company.com.service.user.impl;
 
 import company.com.domain.users.Login;
 import company.com.factory.repository.LoginRepFactory;
+import company.com.repository.user.LoginRepInt;
 import company.com.repository.user.impl.LoginRep;
 import company.com.service.user.LoginServiceInt;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 @Component
 public class LoginService implements LoginServiceInt {
+    @Autowired
+    LoginRepInt longinRepInt;
     private LoginRep loginRep= LoginRepFactory.getLogin();
     private static LoginService loginService;
     private LoginService(){}
@@ -19,29 +26,37 @@ public class LoginService implements LoginServiceInt {
     }
     @Override
     public Login create(Login login) {
-        return loginRep.create(login);
+        return longinRepInt.save(login);
     }
 
     @Override
     public Login update(Login login) {
-        return loginRep.update(login);
+        return longinRepInt.save(login);
     }
 
     @Override
     public void delete(String id) {
-        loginRep.delete(id);
+        longinRepInt.deleteById(id);
     }
 
     @Override
     public Login read(String id) {
-        return loginRep.read(id);
+        Optional<Login> result=longinRepInt.findById(id);
+        return result.orElse(null);
     }
 
     @Override
-    public ArrayList<Login> readAlll() {
-        return loginRep.readAll();
+    public List<Login> readAlll() {
+        return longinRepInt.findAll();
     }
+
     public Login myLogin(String email,String password){
-        return loginRep.findLongin(email,password);
+        List<Login>result=readAlll();
+        for(Login login: result){
+            if(login.getEmail().equals(email)&&login.getPassword().equals(password)){
+                return login;
+            }
+        }
+        return null;
     }
 }

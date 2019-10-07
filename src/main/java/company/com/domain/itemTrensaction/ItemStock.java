@@ -1,6 +1,11 @@
 package company.com.domain.itemTrensaction;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class ItemStock {
+    @Id
     private String stockId;
     private String itemId;
     private double itemPrice;

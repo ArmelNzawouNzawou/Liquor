@@ -2,33 +2,18 @@ package company.com.repository.casher.impl;
 
 import company.com.domain.cashierBuilderPack.Cashier;
 import company.com.repository.casher.CahierInterface;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 
-public class CashierRep implements CahierInterface {
+public class CashierRep{} /**implements CahierInterface {
     private  static CashierRep cashierRep=null;
     private Cashier cashierProduct;
-    private ArrayList<Cashier>mydb=new ArrayList<>();
-   /** private Cashier cashier;
-    private int value;
+    @Autowired
+    CashierInterface c
+    //private ArrayList<Cashier>mydb=new ArrayList<>();
 
-
-    private String url="jdbc:mysql://localhost:3306/lds_db?autoReconnect=true&useSSL=false";
-    String user="root";
-    String password="";
-    Connection conne;
-
-    //to get the company.com.factory that will help to build cashier
-*/
-
-    private CashierRep()
-    {
-        //cashierFactory.getCashier("cashier");
-       /** try {
-            this.conne = DriverManager.getConnection(url,user,password);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }**/
+    private CashierRep() {
     }
 
     public static CashierRep getCashierRep() {
@@ -47,7 +32,7 @@ public class CashierRep implements CahierInterface {
             return cashierProduct;
         }return null;
 
-       /** int primeryKey=getItemNumber();
+       // int primeryKey=getItemNumber();
         System.out.println(cashierProduct.toString());
 
 
@@ -59,7 +44,7 @@ public class CashierRep implements CahierInterface {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return read(""+primeryKey);*/
+        return read(""+primeryKey);
     }
 
     @Override
@@ -80,7 +65,7 @@ public class CashierRep implements CahierInterface {
             e.printStackTrace();
         }
         return read(""+cashierProduct.getId());
-         **/
+
     }
 
     @Override
@@ -102,7 +87,7 @@ public class CashierRep implements CahierInterface {
             System.out.println("one row deleted");
         } catch (SQLException e) {
             e.printStackTrace();
-        }*/
+        }
     }
 
     @Override
@@ -128,7 +113,7 @@ public class CashierRep implements CahierInterface {
             e.printStackTrace();
         }
         return cashier;
-         */
+
     }
 
     @Override
@@ -153,7 +138,7 @@ public class CashierRep implements CahierInterface {
             e.printStackTrace();
         }
         return myList;
-        */
+
     }
 
 
@@ -167,3 +152,4 @@ public class CashierRep implements CahierInterface {
 
 
 }
+*/

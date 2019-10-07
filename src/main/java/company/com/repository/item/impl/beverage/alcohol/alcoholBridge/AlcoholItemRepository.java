@@ -5,7 +5,7 @@ import company.com.repository.item.impl.beverage.alcohol.AlcoholItemInt;
 
 import java.util.ArrayList;
 
-public class AlcoholItemRepository implements AlcoholItemInt {
+public class AlcoholItemRepository{}/** implements AlcoholItemInt {
 
     private static AlcoholItemRepository alco=null;
     private ArrayList<AlcoholItem>mydb=new ArrayList<>();
@@ -68,3 +68,4 @@ public class AlcoholItemRepository implements AlcoholItemInt {
                 .orElse(null);
     }
 }
+*/

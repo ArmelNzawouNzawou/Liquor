@@ -4,9 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Customer {
+    public class Customer {
     @Id
-    private String email;
+    private String customer_number;
     private String name;
     private String SurName;
 
@@ -15,13 +15,14 @@ public class Customer {
 
     }
 
-    public String getEmail() {
-        return email;
+    public String getCustomer_number() {
+        return customer_number;
     }
 
-    public void setEmail(String customer_number) {
-        this.email = customer_number;
+    public void setCustomer_number(String customer_number) {
+        this.customer_number = customer_number;
     }
+
 
 
     public String getName() {
@@ -44,21 +45,16 @@ public class Customer {
     @Override
     public String toString() {
         return "CustomerProduct" +
-                "\ncustomer numb:" + email +
+                "\ncustomer numb:" + customer_number +
                 "\nname:         " + name +
-                "\nSurName:      " + SurName;
+                "\nSurName:      " + SurName ;
 
     }
 
     public static class Builder {
         private String name;
         private String surName;
-        private String email;
-
-        public Builder(String email) {
-            this.email = email;
-
-        }
+        private String customer_number;
 
         public Builder buildName(String name) {
             this.name = name;
@@ -70,9 +66,14 @@ public class Customer {
             return this;
         }
 
+        public Builder (String customer_number) {
+            this.customer_number = customer_number;
+
+        }
+
         public Customer build() {
             Customer customerProduct = new Customer();
-            customerProduct.email = email;
+            customerProduct.customer_number = customer_number;
             customerProduct.name = name;
             customerProduct.SurName = surName;
             return customerProduct;

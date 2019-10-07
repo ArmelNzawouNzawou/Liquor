@@ -1,6 +1,6 @@
 package company.com.factory.repository;
 
-import company.com.repository.ItemTrensaction.ItemStockRep;
+import company.com.repository.ItemTrensaction.impl.ItemStockRep;
 
 public class ItemStockRepFactory {
     public static ItemStockRep getItemStockRep(){

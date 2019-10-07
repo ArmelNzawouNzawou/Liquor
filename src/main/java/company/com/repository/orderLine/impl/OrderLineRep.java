@@ -5,7 +5,7 @@ import company.com.repository.orderLine.OrderLineInt;
 
 import java.util.ArrayList;
 
-public class OrderLineRep implements OrderLineInt {
+public class OrderLineRep{}/** implements OrderLineInt {
     private  static OrderLineRep orderLineRep=null;
 
     private ArrayList<OrderLine>mydb=new ArrayList<>();
@@ -67,3 +67,4 @@ public class OrderLineRep implements OrderLineInt {
                 .orElse(null);
     }
 }
+*/

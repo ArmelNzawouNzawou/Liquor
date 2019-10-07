@@ -5,7 +5,7 @@ import company.com.repository.user.LoginRepInt;
 
 import java.util.ArrayList;
 
-public class LoginRep implements LoginRepInt {
+public class LoginRep{}/** implements LoginRepInt {
     private static LoginRep loginRep;
     private ArrayList<Login>mydb=new ArrayList<>();
 
@@ -72,3 +72,4 @@ public class LoginRep implements LoginRepInt {
                 .orElse(null);
     }
 }
+*/

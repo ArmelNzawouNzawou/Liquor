@@ -1,6 +1,11 @@
 package company.com.domain.item.impl.beverage.alcohol.alcoholBridge;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class AlcoholItem {
+    @Id
     private String id;
     private String item_id;
     private String Beverage_id;

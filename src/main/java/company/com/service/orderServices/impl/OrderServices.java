@@ -1,22 +1,27 @@
 package company.com.service.orderServices.impl;
 
 import company.com.domain.orderBuilder.Orders;
+import company.com.repository.orderRepository.OrderRepositoryIn;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import company.com.repository.orderRepository.impl.OrderRep;
 import company.com.service.orderServices.IOrder;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-@Component
+import java.util.List;
+import java.util.Optional;
+
+@Service
 public class OrderServices implements IOrder {
 
     private static OrderServices orderServices=null;
-    private OrderRep orderRep=OrderRep.getOrders();
+   // private OrderRep orderRep=OrderRep.getOrders();
 
-
-    private OrderServices()
-    {
+    @Autowired
+    private OrderRepositoryIn orderRep;
+    private OrderServices() {
 
     }
     public static OrderServices getOrderServices()
@@ -31,26 +36,35 @@ public class OrderServices implements IOrder {
 
     @Override
     public Orders create(Orders orders) {
-        return orderRep.create(orders);
+        return orderRep.save(orders);
     }
 
     @Override
     public Orders update(Orders orders) {
-        return orderRep.update(orders);
+        Optional<Orders> result=orderRep.findById(orders.getOrderNumeber());
+        if(result!=null){
+            delete(orders.getOrderNumeber());
+            orderRep.save(orders);
+            return orders;
+        }
+        return null;
     }
 
     @Override
     public void delete(String id) {
-        orderRep.delete(id);
+        orderRep.deleteById(id);
     }
 
     @Override
     public Orders read(String id) {
-        return orderRep.read(id);
+        Optional<Orders> result=orderRep.findById(id);
+        if(result!=null) {
+            return result.orElse(null);
+        }return null;
     }
 
     @Override
-    public ArrayList<Orders> readAlll() {
-        return orderRep.readAll();
+    public List<Orders> readAlll() {
+        return orderRep.findAll();
     }
 }

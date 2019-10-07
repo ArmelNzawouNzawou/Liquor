@@ -1,49 +1,59 @@
 package company.com.service.address.Impl;
 
 import company.com.domain.users.Address;
-import company.com.factory.repository.AddressRepFactory;
+
+import company.com.repository.address.AddressInt;
+import company.com.service.address.AddressServiceInt;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import company.com.repository.address.Impl.AddressRep;
-import company.com.service.address.AddressInt;
+
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 @Component
-public class AddressService implements AddressInt {
+public class AddressService implements AddressServiceInt {
     private static AddressService addressService;
-    private AddressRep addressRep= AddressRepFactory.getAddress();
+    // private AddressRep addressRep= AddressRepFactory.getAddress();
+    @Autowired
+    AddressInt addressRep;
 
     private AddressService() {
     }
 
-    public static AddressService getAddressService(){
-        if(addressService==null){
-            addressService=new AddressService();
+    public static AddressService getAddressService() {
+        if (addressService == null) {
+            addressService = new AddressService();
 
-        }return addressService;
+        }
+        return addressService;
     }
+
     @Override
     public Address create(Address address) {
-        return addressRep.create(address);
+        return addressRep.save(address);
     }
 
     @Override
     public Address update(Address address) {
-        return addressRep.update(address);
+        return addressRep.save(address);
     }
 
     @Override
     public void delete(String id) {
-        addressRep.delete(id);
+        addressRep.deleteById(id);
     }
 
     @Override
     public Address read(String id) {
-        return addressRep.read(id);
+        Optional<Address> result=addressRep.findById(id);
+        addressRep.findById(id);
+        return result.orElse(null);
     }
 
     @Override
-    public ArrayList<Address> readAlll() {
-        return addressRep.readAll();
+    public List<Address> readAlll() {
+        return addressRep.findAll();
     }
 }

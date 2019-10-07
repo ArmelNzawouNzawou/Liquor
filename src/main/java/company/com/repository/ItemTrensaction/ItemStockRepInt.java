@@ -1,7 +1,9 @@
 package company.com.repository.ItemTrensaction;
 
 import company.com.domain.itemTrensaction.ItemStock;
-import company.com.repository.Irepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface ItemStockRepInt extends Irepository<ItemStock,String> {
+@Repository
+public interface ItemStockRepInt extends JpaRepository<ItemStock,String> {
 }

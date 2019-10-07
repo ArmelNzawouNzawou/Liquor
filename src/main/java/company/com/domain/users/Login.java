@@ -1,6 +1,11 @@
 package company.com.domain.users;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Login {
+    @Id
     private String email;
     private String password;
     private String userId;

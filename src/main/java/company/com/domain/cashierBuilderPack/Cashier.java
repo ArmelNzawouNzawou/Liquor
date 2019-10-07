@@ -6,9 +6,9 @@ import javax.persistence.Id;
 @Entity
 public class Cashier {
     @Id
-    private String email;
     private String name;
     private String surName;
+    private String id;
 
     private Cashier() {
     }
@@ -29,46 +29,40 @@ public class Cashier {
         this.surName = surName;
     }
 
-    public String getEmail() {
-        return email;
+    public String getId() {
+        return id;
     }
 
-    public void setEmail(String id) {
-        this.email = email;
+    public void setId(String id) {
+        this.id = id;
     }
-
     @Override
     public String toString() {
         return "  \n     Cashier\n   ------" +
                 "\n name:    " + name +
                 "\n surName: " + surName +
-                "\n id:      " + email;
+                "\n id:      " + id;
     }
-
-    public static class Builder {
+    public static class Builder{
         private String name;
         private String surName;
-        private String email;
-
-        public Builder(String email) {
-            this.email = email;
+        private String id;
+        public Builder(String id){
+            this.id=id;
         }
-
-        public Builder buildName(String name) {
-            this.name = name;
+        public Builder buildName(String name){
+            this.name=name;
             return this;
         }
-
-        public Builder buildSurname(String surName) {
-            this.surName = surName;
+        public Builder buildSurname(String surName){
+            this.surName=surName;
             return this;
         }
-
-        public Cashier build() {
-            Cashier cashierProduct = new Cashier();
-            cashierProduct.email = this.email;
-            cashierProduct.name = this.name;
-            cashierProduct.surName = this.surName;
+        public Cashier build(){
+            Cashier cashierProduct=new Cashier();
+            cashierProduct.id=this.id;
+            cashierProduct.name=this.name;
+            cashierProduct.surName=this.surName;
             return cashierProduct;
         }
     }

@@ -7,7 +7,7 @@ import company.com.repository.address.AddressInt;
 
 import java.util.ArrayList;
 
-public class AddressRep implements AddressInt {
+public class AddressRep{}/** implements AddressInt {
 
     private ArrayList<Address>mydb=new ArrayList<>();
     private static AddressRep addressRep;
@@ -67,3 +67,4 @@ public class AddressRep implements AddressInt {
                 .orElse(null);
     }
 }
+**/

@@ -5,8 +5,7 @@ import company.com.repository.orderRepository.OrderRepositoryIn;
 
 import java.util.ArrayList;
 
-public class OrderRep implements OrderRepositoryIn
-{
+public class OrderRep{} /**implements OrderRepositoryIn {
 
     private static OrderRep orderRep=null;
     private ArrayList<Orders>mydb=new ArrayList<>();
@@ -75,3 +74,4 @@ public class OrderRep implements OrderRepositoryIn
     }
 
 }
+*/

@@ -1,16 +1,21 @@
 package company.com.service.orderLine.impl;
 
 import company.com.domain.orderLine.OrderLine;
-import company.com.factory.repository.OrderLineRepFactory;
-import company.com.repository.orderLine.impl.OrderLineRep;
-import company.com.service.orderLine.OrderLineInt;
-import org.springframework.stereotype.Component;
+import company.com.repository.orderLine.OrderLineRepInt;
+import company.com.service.orderLine.OrderLineServiceInt;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-@Component
-public class OrderLineService implements OrderLineInt {
+import java.util.List;
+import java.util.Optional;
+
+@Service
+public class OrderLineService implements OrderLineServiceInt {
     private static OrderLineService orderLineService;
-    private OrderLineRep orderLineRep= OrderLineRepFactory.getOrderLine();
+    //private OrderLineRep orderLineRep= OrderLineRepFactory.getOrderLine();
+    @Autowired
+    OrderLineRepInt orderLineRep;
 
     private OrderLineService() {
     }
@@ -22,26 +27,33 @@ public class OrderLineService implements OrderLineInt {
     }
     @Override
     public OrderLine create(OrderLine orderLine) {
-        return orderLineRep.create(orderLine);
+        return orderLineRep.save(orderLine);
     }
 
     @Override
     public OrderLine update(OrderLine orderLine) {
-        return orderLineRep.update(orderLine);
+        Optional<OrderLine> result=orderLineRep.findById(orderLine.getLineId());
+        if(result!=null){
+            delete(orderLine.getLineId());
+            result.orElse(null);
+        }
+        return null;
     }
 
     @Override
     public void delete(String id) {
-        orderLineRep.delete(id);
+        orderLineRep.deleteById(id);
     }
 
     @Override
     public OrderLine read(String id) {
-        return orderLineRep.read(id);
+        Optional<OrderLine> result=orderLineRep.findById(id);
+        return result.orElse(null);
+
     }
 
     @Override
-    public ArrayList<OrderLine> readAlll() {
-        return orderLineRep.readAll();
+    public List<OrderLine> readAlll() {
+        return orderLineRep.findAll();
     }
 }

@@ -1,13 +1,34 @@
-package company.com.repository.ItemTrensaction;
+package company.com.repository.ItemTrensaction.impl;
 
-import company.com.domain.item.Item;
 import company.com.domain.itemTrensaction.ItemStock;
-import company.com.factory.domain.item.ItemFactory;
 import company.com.factory.domain.itemTransaction.ItemStockFactory;
+import company.com.repository.ItemTrensaction.ItemStockRepInt;
+import org.springframework.stereotype.Repository;
+import java.util.List;
 
-import java.util.ArrayList;
+@Repository
+public abstract class ItemStockRep implements ItemStockRepInt {
+   // @Autowired
 
-public class ItemStockRep implements ItemStockRepInt {
+    public void sellItem(String itemId,int quatity){
+        int acuatalQuantity=0;
+        List<ItemStock> result=findAll();
+        for(ItemStock itemStock:result){
+            if(itemStock.getItemId().equals(itemId)){
+                acuatalQuantity=itemStock.getQuantity()-quatity;
+               // ItemStock update= ItemStockFactory.updateItemStock(res.getStockId(),res.getItemId(),res.getItemPrice(),res.getQuantity()-numberOfItem,res.getDescrption());
+            }
+        }
+       /** ItemStock res=stream(itemId);
+        if(res!=null&&res.getQuantity()<=numberOfItem){
+            ItemStock update= ItemStockFactory.updateItemStock(res.getStockId(),res.getItemId(),res.getItemPrice(),res.getQuantity()-numberOfItem,res.getDescrption());
+            delete(itemId);
+            update(update);*/
+        }
+    }
+
+
+/**{
     private static ItemStockRep itemStockRep;
     private ArrayList<ItemStock>mydb=new ArrayList<>();
     private  ItemStockRep(){}
@@ -80,3 +101,4 @@ public class ItemStockRep implements ItemStockRepInt {
                 .orElse(null);
     }
 }
+*/
