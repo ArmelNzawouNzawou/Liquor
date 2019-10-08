@@ -3,13 +3,16 @@ package company.com.repository.user.impl;
 import company.com.domain.users.Login;
 import company.com.factory.domain.user.LoginFactory;
 import company.com.factory.repository.LoginRepFactory;
+import company.com.repository.user.LoginRepInt;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import static org.junit.Assert.*;
 
 public class LoginRepTest {
-
+@Autowired
+    LoginRepInt loginRepInt;
 
     @Before
     public void setUp() throws Exception {
@@ -18,9 +21,7 @@ public class LoginRepTest {
     @Test
     public void create() {
         Login login= LoginFactory.getLogin("esapoi@.com","dfdfds","yeah!");
-        LoginRep loginRep= LoginRepFactory.getLogin();
-       // loginRep.create(login);
-        System.out.println(loginRep.create(login).toString());
+        System.out.println(loginRepInt.save(login).toString());
     }
 
     @Test

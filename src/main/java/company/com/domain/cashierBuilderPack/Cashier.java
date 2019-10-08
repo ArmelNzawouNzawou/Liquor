@@ -6,9 +6,10 @@ import javax.persistence.Id;
 @Entity
 public class Cashier {
     @Id
+    private String id;
     private String name;
     private String surName;
-    private String id;
+
 
     private Cashier() {
     }

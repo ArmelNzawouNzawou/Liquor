@@ -12,6 +12,8 @@ import company.com.service.address.Impl.AddressService;
 import company.com.service.customerServ.impl.CustomerService;
 
 import java.util.ArrayList;
+import java.util.List;
+
 @RestController
 @RequestMapping("LDS/customer")
 public class CustomerController  {
@@ -26,7 +28,7 @@ public class CustomerController  {
     public Customer create(@RequestBody Customer_address ca) {
 
         if(ca!=null){
-            Customer cust= CustomerFactory.getCustomer(ca.getCustomer().getName(),ca.getCustomer().getSurName());
+            Customer cust= CustomerFactory.getCustomer(ca.getCustomer().getName(),ca.getCustomer().getSurName(),ca.getCustomer().getSurName());
             Address ad= AddressFactory.getAddress(ca.getAddress().getEmailAddress(),ca.getAddress().getAddress(),ca.getAddress().getPhoner_Number());
             return customerService.create(cust);
         }
@@ -56,7 +58,7 @@ public class CustomerController  {
     }
 
     @GetMapping("/reads")
-    public ArrayList<Customer_address> readAll() {
+    public List<Customer> readAll() {
         return customerService.readAlll();
     }
     /** @Autowired

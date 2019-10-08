@@ -16,7 +16,7 @@ import java.util.Optional;
 public class LoginService implements LoginServiceInt {
     @Autowired
     LoginRepInt longinRepInt;
-    private LoginRep loginRep= LoginRepFactory.getLogin();
+    //private LoginRep loginRep= LoginRepFactory.getLogin();
     private static LoginService loginService;
     private LoginService(){}
     public static LoginService getLoginService(){

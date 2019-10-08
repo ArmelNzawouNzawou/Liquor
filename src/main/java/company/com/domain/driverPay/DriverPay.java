@@ -1,11 +1,10 @@
 package company.com.domain.driverPay;
 
 public class DriverPay {
-
     private String payCode;
     private int numberOfOrder;
     private int distance;
-    private String driverBumber;
+    private String driverNumber;
     private String time;
 
 
@@ -37,11 +36,11 @@ public class DriverPay {
     }
 
     public String getDriver() {
-        return driverBumber;
+        return driverNumber;
     }
 
     public void setDriver(String driverBumber) {
-        this.driverBumber = driverBumber;
+        this.driverNumber = driverBumber;
     }
 
     public String getTime() {
@@ -58,7 +57,7 @@ public class DriverPay {
                 "payCode='" + payCode + '\'' +
                 ", numberOfOrder=" + numberOfOrder +
                 ", distance=" + distance +
-                ", driver='" + driverBumber + '\'' +
+                ", driver='" + driverNumber + '\'' +
                 ", time='" + time + '\'' +
                 '}';
     }
@@ -101,7 +100,7 @@ public class DriverPay {
             driverPay.distance = this.distance;
             driverPay.numberOfOrder = this.numberOfOrder;
             driverPay.payCode = this.payCode;
-            driverPay.driverBumber = this.driverBumber;
+            driverPay.driverNumber = this.driverBumber;
             driverPay.time = this.time;
             return driverPay;
         }

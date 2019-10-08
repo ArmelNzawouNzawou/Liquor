@@ -7,12 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import company.com.repository.casher.impl.CashierRep;
 import company.com.service.Cashier.CashierServiceInt;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@Component
+@Service
 public class CashierServicer implements CashierServiceInt {
     private static CashierServicer cashier=null;
     //CashierRep cashierRep= CashierRepFac.getCashier();

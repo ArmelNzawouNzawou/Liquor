@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import company.com.service.address.Impl.AddressService;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/address")
@@ -15,6 +16,10 @@ public class AddressController implements ControllerInt<Address,String> {
     @Autowired
     private AddressService addressService;
 
+    @GetMapping("/home")
+    public String home(){
+        return "home";
+    }
     @PostMapping("/create")
     @Override
     public Address create(@RequestBody Address address) {
@@ -41,7 +46,7 @@ public class AddressController implements ControllerInt<Address,String> {
 
     @GetMapping("/reads")
     @Override
-    public ArrayList<Address> readAll() {
+    public List<Address> readAll() {
         return addressService.readAlll();
     }
 }

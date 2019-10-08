@@ -6,6 +6,7 @@ import javax.persistence.Id;
 @Entity
     public class Customer {
     @Id
+    private String email;
     private String customer_number;
     private String name;
     private String SurName;
@@ -13,6 +14,14 @@ import javax.persistence.Id;
 
     private Customer() {
 
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getCustomer_number() {
@@ -47,6 +56,7 @@ import javax.persistence.Id;
         return "CustomerProduct" +
                 "\ncustomer numb:" + customer_number +
                 "\nname:         " + name +
+                "\nname:         " + email +
                 "\nSurName:      " + SurName ;
 
     }
@@ -54,10 +64,15 @@ import javax.persistence.Id;
     public static class Builder {
         private String name;
         private String surName;
+        private String email;
         private String customer_number;
 
         public Builder buildName(String name) {
             this.name = name;
+            return this;
+        }
+        public Builder buildEmail(String email){
+            this.email=email;
             return this;
         }
 
@@ -73,9 +88,10 @@ import javax.persistence.Id;
 
         public Customer build() {
             Customer customerProduct = new Customer();
-            customerProduct.customer_number = customer_number;
-            customerProduct.name = name;
-            customerProduct.SurName = surName;
+            customerProduct.customer_number = this.customer_number;
+            customerProduct.name = this.name;
+            customerProduct.SurName = this.surName;
+            customerProduct.email=this.email;
             return customerProduct;
         }
     }

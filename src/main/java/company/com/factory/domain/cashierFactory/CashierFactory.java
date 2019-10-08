@@ -3,9 +3,9 @@ import company.com.domain.cashierBuilderPack.Cashier;
 import company.com.util.IdGenerator;
 
 public class CashierFactory {
-  public static Cashier getCashier(String email,String name, String surName){
+  public static Cashier getCashier(String name, String surName){
       return new Cashier
-              .Builder(email)
+              .Builder("err")
               .buildName(name)
               .buildSurname(surName)
               .build();

@@ -10,7 +10,7 @@ public class D_pay {
     private int rate;
     private double salary;
     private String payType;
-    private String driverBumber;
+    private String driverNumber;
     private String payDate;
 
 
@@ -42,11 +42,11 @@ public class D_pay {
     }
 
     public String getDriverBumber() {
-        return driverBumber;
+        return driverNumber;
     }
 
     public void setDriverBumber(String driverBumber) {
-        this.driverBumber = driverBumber;
+        this.driverNumber = driverBumber;
     }
 
     public String getPayDate() {
@@ -64,6 +64,19 @@ public class D_pay {
     public void setPayCode(String payCode) {
         this.payCode = payCode;
     }
+
+    @Override
+    public String toString() {
+        return "D_pay{" +
+                "payCode='" + payCode + '\'' +
+                ", rate=" + rate +
+                ", salary=" + salary +
+                ", payType='" + payType + '\'' +
+                ", driverNumber='" + driverNumber + '\'' +
+                ", payDate='" + payDate + '\'' +
+                '}';
+    }
+
     public static class Builder {
         private int rate;
         private double salary;
@@ -104,7 +117,7 @@ public class D_pay {
             driverPay.salary = this.salary;
             driverPay.rate = this.rate;
             driverPay.payCode = this.payCode;
-            driverPay.driverBumber = this.driverBumber;
+            driverPay.driverNumber = this.driverBumber;
             driverPay.payType = this.payType;
             driverPay.payDate = this.payDate;
             return driverPay;

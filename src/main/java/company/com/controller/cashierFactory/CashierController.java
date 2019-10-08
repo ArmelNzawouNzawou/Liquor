@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.*;
 import company.com.service.Cashier.impl.CashierServicer;
 
 import java.util.ArrayList;
+import java.util.List;
+
 @RestController
 @RequestMapping("LDS/cashier")
 public class CashierController implements ControllerInt<Cashier,String> {
@@ -27,17 +29,18 @@ public class CashierController implements ControllerInt<Cashier,String> {
     @GetMapping("/delete")
     @Override
     public void delete(@RequestParam(value = "id") String id) {
+        cashierServicer.delete(id);
     }
 
     @PostMapping("/update")
     @Override
     public Cashier update(@RequestBody Cashier cashier) {
-        return null;
+        return cashierServicer.update(cashier);
     }
 
     @GetMapping("/reads")
     @Override
-    public ArrayList<Cashier> readAll() {
-        return null;
+    public List<Cashier> readAll() {
+        return cashierServicer.readAlll();
     }
 }

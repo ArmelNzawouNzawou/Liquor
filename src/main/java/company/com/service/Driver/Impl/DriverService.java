@@ -18,7 +18,7 @@ import java.util.Optional;
 public class DriverService implements DriverServiceInt {
 
 
-    DriverRep driver= DriverRepFact.getDriverRep();
+    //DriverRep driver= DriverRepFact.getDriverRep();
     @Autowired
     DriverRepInt driverRepInt;
 
@@ -42,9 +42,9 @@ public class DriverService implements DriverServiceInt {
 
     @Override
     public Driver update(Driver driverProduct) {
-        Optional<Driver> myDriver=driverRepInt.findById(driverProduct.getId());
+        Optional<Driver> myDriver=driverRepInt.findById(driverProduct.getEmail());
         if(myDriver!=null){
-            delete(driverProduct.getId());
+            delete(driverProduct.getEmail());
             driverRepInt.save(driverProduct);
             return myDriver.orElse(null);
         }

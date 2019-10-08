@@ -6,10 +6,12 @@ import company.com.factory.repository.CashierRepFac;
 import org.junit.Before;
 import org.junit.Test;
 import company.com.repository.casher.impl.CashierRep;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class CashierRepTest {
-    private Cashier cashier= CashierFactory.getCashier("espoir","diteke");
-    private CashierRep cashierRep= CashierRepFac.getCashier();
+    @Autowired
+    CahierInterface  cashierRep;
+    private Cashier cashier= CashierFactory.getCashier("diteke","mbuyi");
 
     @Before
     public void setUp() throws Exception {
@@ -17,7 +19,8 @@ public class CashierRepTest {
 
     @Test
     public void create() {
-        System.out.println(cashierRep.create(cashier).toString());
+        System.out.println(cashier);
+        System.out.println(cashierRep.save(cashier).toString());
     }
 
     @Test

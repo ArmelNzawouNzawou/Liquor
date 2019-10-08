@@ -7,7 +7,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class CashierFactoryTest {
-private Cashier cashier=CashierFactory.getCashier("noxy","noxolo");
+private Cashier cashier=CashierFactory.getCashier("noxolo","mabuka");
     @Test
     public void getCashier() {
         Assert.assertNotNull(cashier);

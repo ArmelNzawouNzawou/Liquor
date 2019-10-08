@@ -7,20 +7,20 @@ import company.com.repository.customer.impl.CustomerRepository;
 import company.com.service.customerServ.CustomerServiceInt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@Component
+@Service
 public class CustomerService implements CustomerServiceInt {
     private static CustomerService customer=null;
 
     @Autowired
     CustomerRep customerRep;
-    //Getting the company.com.repository class.
 
-    CustomerRepository rep= CustomerRepoFac.getCustomerRepository();
+    //CustomerRepository rep= CustomerRepoFac.getCustomerRepository();
     private CustomerService() {
 
     }

@@ -6,24 +6,16 @@ import company.com.repository.ItemTrensaction.ItemStockRepInt;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 
-@Repository
-public abstract class ItemStockRep implements ItemStockRepInt {
+
+public class ItemStockRep{}/** implements ItemStockRepInt {
    // @Autowired
 
-    public void sellItem(String itemId,int quatity){
-        int acuatalQuantity=0;
-        List<ItemStock> result=findAll();
-        for(ItemStock itemStock:result){
-            if(itemStock.getItemId().equals(itemId)){
-                acuatalQuantity=itemStock.getQuantity()-quatity;
-               // ItemStock update= ItemStockFactory.updateItemStock(res.getStockId(),res.getItemId(),res.getItemPrice(),res.getQuantity()-numberOfItem,res.getDescrption());
-            }
-        }
+    // void sellItem(String itemId,int quatity);
        /** ItemStock res=stream(itemId);
         if(res!=null&&res.getQuantity()<=numberOfItem){
             ItemStock update= ItemStockFactory.updateItemStock(res.getStockId(),res.getItemId(),res.getItemPrice(),res.getQuantity()-numberOfItem,res.getDescrption());
             delete(itemId);
-            update(update);*/
+            update(update);
         }
     }
 

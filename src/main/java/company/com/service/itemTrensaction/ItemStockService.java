@@ -15,7 +15,7 @@ import java.util.Optional;
 @Component
 public class ItemStockService implements Iservice<ItemStock,String> {
     @Autowired
-    ItemStockRep itemStockRep;
+    ItemStockRepInt itemStockRep;
     private static ItemStockService itemStockService;
     private ItemStockService(){}
     public static ItemStockService getItemStockService(){
@@ -56,6 +56,6 @@ public class ItemStockService implements Iservice<ItemStock,String> {
         return itemStockRep.findAll();
     }
     public void sellItem(String itemId,int number){
-        itemStockRep.sellItem(itemId,number);
+       // itemStockRep.sellItem(itemId,number);
     }
 }

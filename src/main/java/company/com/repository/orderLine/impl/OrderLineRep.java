@@ -1,8 +1,5 @@
 package company.com.repository.orderLine.impl;
 
-import company.com.domain.orderLine.OrderLine;
-import company.com.repository.orderLine.OrderLineInt;
-
 import java.util.ArrayList;
 
 public class OrderLineRep{}/** implements OrderLineInt {

@@ -1,6 +1,11 @@
 package company.com.domain.customerPayment.impl;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Card {
+    @Id
     private String customerNumber;
     private String bankName;
     private String paymentDetaild;

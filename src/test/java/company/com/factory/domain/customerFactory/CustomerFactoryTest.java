@@ -7,7 +7,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class CustomerFactoryTest {
-    private Customer customer =CustomerFactory.getCustomer("espoir","diteekemena");
+    private Customer customer =CustomerFactory.getCustomer("espoir","diteekemena","dire");
 
     @Test
     public void getCustomer() {

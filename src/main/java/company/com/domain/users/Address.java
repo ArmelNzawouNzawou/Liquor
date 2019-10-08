@@ -58,8 +58,8 @@ public class Address {
 
     public static class Builder{
         private String userId;
-        private String emailAddress;
-        private String address;
+        private String EmailAddress;
+        private String Address;
         private String phoner_Number;
 
 
@@ -67,11 +67,11 @@ public class Address {
             this.userId=userId;
         }
         public Builder buildEmail(String emailAddress){
-            this.emailAddress=emailAddress;
+            this.EmailAddress=emailAddress;
             return this;
         }
         public Builder buildAddress(String address){
-            this.address=address;
+            this.Address=address;
             return this;
         }
         public Builder buildPhoneNumber(String phoner_Number){
@@ -81,8 +81,8 @@ public class Address {
         public Address build(){
             Address address=new Address();
             address.userId=this.userId;
-            address.Address=this.address;
-            address.EmailAddress=this.emailAddress;
+            address.Address=this.Address;
+            address.EmailAddress=this.EmailAddress;
             address.phoner_Number=this.phoner_Number;
             return address;
         }

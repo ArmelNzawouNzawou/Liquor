@@ -1,6 +1,11 @@
 package company.com.domain.delivery;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Delivery {
+    @Id
     private String deliveryNumber;
     private String orderNumber;
     private String customerNumber;

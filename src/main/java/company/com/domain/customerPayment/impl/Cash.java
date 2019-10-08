@@ -1,10 +1,15 @@
 package company.com.domain.customerPayment.impl;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Cash {
+    @Id
+    private String payment_id;
     private String customerNumber;
     private String orderNumber;
     private double amount;
-    private String payment_id;
     private String arrengement_id;
 
     private Cash() {

@@ -58,9 +58,9 @@ public class UserController /**implements ControllerInt<User,String>*/
             loginService.create(createLogin(gu.getEmail(),gu.getPassword(),"customer"));
             user_description = cust.toString();
         } else if (gu.getUserType().equalsIgnoreCase("cashier")) {
-            cashier = CashierFactory.getCashier(gu.getEmail(), gu.getName(), gu.getSurName());
+            cashier = CashierFactory.getCashier( gu.getName(), gu.getSurName());
             Cashier cash = cashierServicer.create(cashier);
-            success = cash.getEmail();
+            success = cash.getId();
             loginService.create(createLogin(gu.getEmail(),gu.getPassword(),"cashier"));
             user_description = cash.toString();
         } else if (gu.getUserType().equalsIgnoreCase("driver")) {
@@ -152,7 +152,7 @@ public class UserController /**implements ControllerInt<User,String>*/
                // userType = myUser.getUserType();
                 switch (userType) {
                     case "cashier":
-                        cashier=CashierFactory.getCashier(user.getEmail(),user.getName(),user.getSurName());
+                        cashier=CashierFactory.getCashier(user.getName(),user.getSurName());
                         //cashier=cashierServicer.read(user.getEmail());
                         cashierServicer.update(cashier);
                         stringUser=cashier.toString();

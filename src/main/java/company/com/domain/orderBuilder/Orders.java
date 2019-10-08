@@ -1,8 +1,13 @@
 package company.com.domain.orderBuilder;
 
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /***this is the product class*/
+@Entity
 public class Orders {
+    @Id
     private String orderNumeber;
     private String customerNumber;
     private String orderTime;
