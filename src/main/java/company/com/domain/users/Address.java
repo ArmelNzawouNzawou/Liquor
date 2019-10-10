@@ -6,29 +6,21 @@ import javax.persistence.Id;
 @Entity
 public class Address {
     @Id
-    private String userId;
-    private String EmailAddress;
+    private String addressId;
     private String Address;
     private String phoner_Number;
 
     private Address() {
     }
 
-    public String getUserId() {
-        return userId;
+    public String getAddressId() {
+        return addressId;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setAddressId(String addressId) {
+        this.addressId = addressId;
     }
 
-    public String getEmailAddress() {
-        return EmailAddress;
-    }
-
-    public void setEmailAddress(String emailAddress) {
-        EmailAddress = emailAddress;
-    }
 
     public String getAddress() {
         return Address;
@@ -49,27 +41,22 @@ public class Address {
     @Override
     public String toString() {
         return "Address{" +
-                "userId='" + userId + '\'' +
-                ", EmailAddress='" + EmailAddress + '\'' +
+                "addressId='" + addressId + '\'' +
                 ", Address='" + Address + '\'' +
                 ", phoner_Number='" + phoner_Number + '\'' +
                 '}';
     }
 
     public static class Builder{
-        private String userId;
-        private String EmailAddress;
+        private String addressId;
         private String Address;
         private String phoner_Number;
 
 
-        public Builder(String userId){
-            this.userId=userId;
+        public Builder(String addressId){
+            this.addressId=addressId;
         }
-        public Builder buildEmail(String emailAddress){
-            this.EmailAddress=emailAddress;
-            return this;
-        }
+
         public Builder buildAddress(String address){
             this.Address=address;
             return this;
@@ -80,9 +67,8 @@ public class Address {
         }
         public Address build(){
             Address address=new Address();
-            address.userId=this.userId;
+            address.addressId=this.addressId;
             address.Address=this.Address;
-            address.EmailAddress=this.EmailAddress;
             address.phoner_Number=this.phoner_Number;
             return address;
         }

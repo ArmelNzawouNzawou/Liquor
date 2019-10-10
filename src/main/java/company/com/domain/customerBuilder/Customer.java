@@ -6,26 +6,24 @@ import javax.persistence.Id;
 @Entity
     public class Customer {
     @Id
-    private String email;
     private String customer_number;
-    private String name;
-    private String SurName;
-
+    private String description;
 
     private Customer() {
 
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
     public String getCustomer_number() {
         return customer_number;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public void setCustomer_number(String customer_number) {
@@ -34,50 +32,22 @@ import javax.persistence.Id;
 
 
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSurName() {
-        return SurName;
-    }
-
-    public void setSurName(String surName) {
-        SurName = surName;
-    }
-
-
     @Override
     public String toString() {
         return "CustomerProduct" +
                 "\ncustomer numb:" + customer_number +
-                "\nname:         " + name +
-                "\nname:         " + email +
-                "\nSurName:      " + SurName ;
+                "\nname:         " + description ;
 
     }
 
     public static class Builder {
-        private String name;
-        private String surName;
-        private String email;
+        private String description;
         private String customer_number;
 
-        public Builder buildName(String name) {
-            this.name = name;
-            return this;
-        }
-        public Builder buildEmail(String email){
-            this.email=email;
-            return this;
-        }
 
-        public Builder buildSurname(String surName) {
-            this.surName = surName;
+
+        public Builder buildDescription(String description) {
+            this.description = description;
             return this;
         }
 
@@ -89,9 +59,7 @@ import javax.persistence.Id;
         public Customer build() {
             Customer customerProduct = new Customer();
             customerProduct.customer_number = this.customer_number;
-            customerProduct.name = this.name;
-            customerProduct.SurName = this.surName;
-            customerProduct.email=this.email;
+            customerProduct.description = this.description;
             return customerProduct;
         }
     }

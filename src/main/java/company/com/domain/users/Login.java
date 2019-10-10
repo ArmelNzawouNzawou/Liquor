@@ -8,9 +8,17 @@ public class Login {
     @Id
     private String email;
     private String password;
-    private String userId;
+    private String token;
 
     private Login() {
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
     public String getEmail() {
@@ -29,27 +37,20 @@ public class Login {
         this.password = password;
     }
 
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
 
     @Override
     public String toString() {
         return "Login{" +
                 "email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", userId='" + userId + '\'' +
+                ", token='" + token + '\'' +
                 '}';
     }
 
     public static class Builder{
         private String email;
         private String password;
-        private String userId;
+        private String token;
          public Builder(String email){
              this.email=email;
          }
@@ -57,15 +58,16 @@ public class Login {
              this.password=password;
              return this;
          }
-         public Builder buildUserId(String userId){
-             this.userId=userId;
+         public Builder buildToken(String token){
+             this.token=token;
              return this;
          }
+
          public Login build(){
              Login longin =new Login();
              longin.email=this.email;
              longin.password=this.password;
-             longin.userId=this.userId;
+             longin.token=this.token;
              return longin;
          }
     }

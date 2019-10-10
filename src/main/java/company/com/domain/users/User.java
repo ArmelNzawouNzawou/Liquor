@@ -7,21 +7,29 @@ import javax.persistence.Id;
 public class User {
     @Id
     private String email;
-    private String password;
+    private String name;
+    private String SurName;
     private String UserType;
     private String description;
-
 
 
     private User() {
     }
 
-    public String getPassword() {
-        return password;
+    public String getName() {
+        return name;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSurName() {
+        return SurName;
+    }
+
+    public void setSurName(String surName) {
+        SurName = surName;
     }
 
     public String getDescription() {
@@ -39,28 +47,30 @@ public class User {
         UserType = userType;
     }
 
-
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
-        email = email;
+        this.email = email;
     }
 
 
     @Override
     public String toString() {
         return "User{" +
-                "id='" + email + '\'' +
-                ", Name='" + password + '\'' +
+                "email='" + email + '\'' +
+                ", name='" + name + '\'' +
+                ", SurName='" + SurName + '\'' +
                 ", UserType='" + UserType + '\'' +
+                ", description='" + description + '\'' +
                 '}';
     }
 
     public static class Builder{
         private String email;
-        private String password;
+        private String name;
+        private String SurName;
         private String UserType;
         private String description;
 
@@ -68,13 +78,18 @@ public class User {
             this.description=description;
             return this;
         }
+        public Builder buildName(String name) {
+            this.name = name;
+            return this;
+        }
+        public Builder buildSurname(String surName) {
+            this.SurName = surName;
+            return this;
+        }
         public Builder(String email) {
             this.email=email;
         }
-        public Builder buildPassword(String password){
-            this.password=password;
-            return this;
-        }
+
 
         public Builder buildUserTpe(String userType){
             this.UserType=userType;
@@ -84,9 +99,10 @@ public class User {
         public User build(){
             User user=new User();
             user.email=this.email;
-            user.password=this.password;
             user.UserType=this.UserType;
             user.description=this.description;
+            user.name = this.name;
+            user.SurName = this.SurName;
             return user;
         }
     }
