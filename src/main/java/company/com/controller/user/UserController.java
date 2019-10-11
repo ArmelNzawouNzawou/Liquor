@@ -52,23 +52,23 @@ public class UserController /**implements ControllerInt<User,String>*/
     @PostMapping("/create")
     public G_User create(@RequestBody G_User gu) {
         if (gu.getUserType().equalsIgnoreCase("customer")) {
-            customer = CustomerFactory.getCustomer(gu.getEmail(), gu.getName(), gu.getSurName());
+            customer = CustomerFactory.getCustomer("new Customer");//this filed will need to be replaced with a proper input
             Customer cust = customerService.create(customer);
-            success = cust.getEmail();
-            loginService.create(createLogin(gu.getEmail(),gu.getPassword(),"customer"));
+            success = cust.getCustomer_number();
+            loginService.create(createLogin(gu.getEmail(), gu.getPassword(), "customer"));
             user_description = cust.toString();
         } else if (gu.getUserType().equalsIgnoreCase("cashier")) {
-            cashier = CashierFactory.getCashier( gu.getName(), gu.getSurName());
+            cashier = CashierFactory.getCashier(gu.getName(), gu.getSurName());
             Cashier cash = cashierServicer.create(cashier);
             success = cash.getId();
-            loginService.create(createLogin(gu.getEmail(),gu.getPassword(),"cashier"));
+            loginService.create(createLogin(gu.getEmail(), gu.getPassword(), "cashier"));
             user_description = cash.toString();
         } else if (gu.getUserType().equalsIgnoreCase("driver")) {
             driver = DriverFactory.getDriver(gu.getEmail(), gu.getStat(), gu.getName(), gu.getSurName());
             Driver dr = driverService.create(driver);
             user_description = dr.toString();
             success = dr.getEmail();
-            loginService.create(createLogin(gu.getEmail(),gu.getPassword(),"driver"));
+            loginService.create(createLogin(gu.getEmail(), gu.getPassword(), "driver"));
 
         }
         if (!success.equals(null) || !user_description.equals("")) {
@@ -81,7 +81,7 @@ public class UserController /**implements ControllerInt<User,String>*/
 
     @GetMapping("/read")
     public G_User read(@RequestParam(value = "id") String id) {
-        String user=null;
+        String user = null;
         String userType = null;
         User myUser = userService.read(id);
 //(String stat,String email,String Name,String SurName,String UserType,String password)
@@ -89,29 +89,29 @@ public class UserController /**implements ControllerInt<User,String>*/
             userType = myUser.getUserType();
             switch (userType) {
                 case "cashier":
-                    cashier=cashierServicer.read(myUser.getEmail());
-                  user=cashier.toString();
-                  g_user= G_userFactory.getUser("",id,cashier.getName(),cashier.getSurName(),"cashier",myUser.getPassword());
+                    cashier = cashierServicer.read(myUser.getEmail());
+                    user = cashier.toString();
+                    g_user = G_userFactory.getUser("", id, cashier.getName(), cashier.getSurName(), "cashier");
                 case "customer":
-                    customer=customerService.read(myUser.getEmail());
-                  user=customer.toString();
-                    g_user= G_userFactory.getUser("",id,customer.getName(),customer.getSurName(),"cashier",myUser.getPassword());
+                    customer = customerService.read(myUser.getEmail());
+                    user = customer.toString();
+                    g_user = G_userFactory.getUser("", id, customer.getName(), customer.getSurName(), "cashier");
 
                 case "driver":
-                    driver=driverService.read(myUser.getEmail());
-                    user=driver.toString();
-                    g_user= G_userFactory.getUser("",id,driver.getName(),driver.getSurName(),"cashier",myUser.getPassword());
+                    driver = driverService.read(myUser.getEmail());
+                    user = driver.toString();
+                    g_user = G_userFactory.getUser("", id, driver.getName(), driver.getSurName(), "cashier", myUser.getPassword());
 
                     break;
             }
-        return g_user;
+            return g_user;
         }
         return null;
     }
 
     @GetMapping("/delete")
     public void delete(@RequestParam(value = "id") String id) {
-        String user=null;
+        String user = null;
         String userType = null;
         User myUser = userService.read(id);
         if (myUser != null) {
@@ -144,36 +144,36 @@ public class UserController /**implements ControllerInt<User,String>*/
     @PostMapping("/update")
     public G_User update(@RequestBody G_User user) {
 
-        String stringUser=null;
+        String stringUser = null;
         String userType = userService.read(user.getEmail()).getUserType();
-        User newUser=UserFactory.getUser(user.getEmail(),user.getPassword(),user.getUserType(),getDate()+"  updated");
+        User newUser = UserFactory.getUser(user.getEmail(), user.getPassword(), user.getUserType(), getDate() + "  updated");
 //(String stat,String email,String Name,String SurName,String UserType,String password)
-            if (user != null) {
-               // userType = myUser.getUserType();
-                switch (userType) {
-                    case "cashier":
-                        cashier=CashierFactory.getCashier(user.getName(),user.getSurName());
-                        //cashier=cashierServicer.read(user.getEmail());
-                        cashierServicer.update(cashier);
-                        stringUser=cashier.toString();
-                        g_user= G_userFactory.getUser("",user.getEmail(),cashier.getName(),cashier.getSurName(),"cashier",newUser.getPassword());
-                    case "customer":
-                        customer=CustomerFactory.getCustomer(user.getEmail(),user.getName(),user.getSurName());
-                        customer=customerService.read(user.getEmail());
-                        customerService.update(customer);
-                        stringUser=customer.toString();
-                        g_user= G_userFactory.getUser("",user.getEmail(),customer.getName(),customer.getSurName(),"cashier",newUser.getPassword());
+        if (user != null) {
+            // userType = myUser.getUserType();
+            switch (userType) {
+                case "cashier":
+                    cashier = CashierFactory.getCashier(user.getName(), user.getSurName());
+                    //cashier=cashierServicer.read(user.getEmail());
+                    cashierServicer.update(cashier);
+                    stringUser = cashier.toString();
+                    g_user = G_userFactory.getUser("", user.getEmail(), cashier.getName(), cashier.getSurName(), "cashier", newUser.getPassword());
+                case "customer":
+                    customer = CustomerFactory.getCustomer(user.getEmail(), user.getName(), user.getSurName());
+                    customer = customerService.read(user.getEmail());
+                    customerService.update(customer);
+                    stringUser = customer.toString();
+                    g_user = G_userFactory.getUser("", user.getEmail(), customer.getName(), customer.getSurName(), "cashier", newUser.getPassword());
 
-                    case "driver":
-                        driver=driverService.read(user.getEmail());
-                        driverService.update(driver);
-                        stringUser=driver.toString();
-                        g_user= G_userFactory.getUser(user.getStat(),user.getEmail(),driver.getName(),driver.getSurName(),"cashier",newUser.getPassword());
-                        break;
-                }
-                userService.update(newUser);
-                return g_user;
+                case "driver":
+                    driver = driverService.read(user.getEmail());
+                    driverService.update(driver);
+                    stringUser = driver.toString();
+                    g_user = G_userFactory.getUser(user.getStat(), user.getEmail(), driver.getName(), driver.getSurName(), "cashier", newUser.getPassword());
+                    break;
             }
+            userService.update(newUser);
+            return g_user;
+        }
         return null;
     }
 
@@ -187,8 +187,9 @@ public class UserController /**implements ControllerInt<User,String>*/
         LocalDateTime now = LocalDateTime.now();
         return sdf.format(now);
     }
-    public Login createLogin(String email,String password,String userId){
-        Login login= LoginFactory.getLogin(email,password,userId);
+
+    public Login createLogin(String email, String password, String userId) {
+        Login login = LoginFactory.getLogin(email, password, userId);
         return login;
     }
 }
