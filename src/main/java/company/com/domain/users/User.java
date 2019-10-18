@@ -74,7 +74,7 @@ public class User {
         private String UserType;
         private String description;
 
-        public Builder buildDescri(String description){
+        public Builder buildDescription(String description){
             this.description=description;
             return this;
         }

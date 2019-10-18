@@ -28,7 +28,7 @@ import java.util.ArrayList;
 
 @RestController
 @RequestMapping("/user")
-public class UserController /**implements ControllerInt<User,String>*/
+public class UserController{} /**implements ControllerInt<User,String>
 {
 
     @Autowired
@@ -72,7 +72,7 @@ public class UserController /**implements ControllerInt<User,String>*/
 
         }
         if (!success.equals(null) || !user_description.equals("")) {
-            User user = UserFactory.getUser(gu.getName(), gu.getSurName(), gu.getUserType(), getDate());
+            User user = UserFactory.getUser(gu.getName(), gu.getSurName(), gu.getUserType());
             userService.create(user);
             return gu;
         }
@@ -91,11 +91,11 @@ public class UserController /**implements ControllerInt<User,String>*/
                 case "cashier":
                     cashier = cashierServicer.read(myUser.getEmail());
                     user = cashier.toString();
-                    g_user = G_userFactory.getUser("", id, cashier.getName(), cashier.getSurName(), "cashier");
+                    g_user = G_userFactory.getUser("", id, cashier.getName(), cashier.getSurName(), "cashier","");
                 case "customer":
                     customer = customerService.read(myUser.getEmail());
                     user = customer.toString();
-                    g_user = G_userFactory.getUser("", id, customer.getName(), customer.getSurName(), "cashier");
+                    g_user = G_userFactory.getUser("", id, customer.e(), customer.getSurName(), "cashier");
 
                 case "driver":
                     driver = driverService.read(myUser.getEmail());
@@ -146,7 +146,7 @@ public class UserController /**implements ControllerInt<User,String>*/
 
         String stringUser = null;
         String userType = userService.read(user.getEmail()).getUserType();
-        User newUser = UserFactory.getUser(user.getEmail(), user.getPassword(), user.getUserType(), getDate() + "  updated");
+        User newUser = UserFactory.getUser(user.getEmail(), user.getPassword(), user.getUserType());
 //(String stat,String email,String Name,String SurName,String UserType,String password)
         if (user != null) {
             // userType = myUser.getUserType();
@@ -158,7 +158,7 @@ public class UserController /**implements ControllerInt<User,String>*/
                     stringUser = cashier.toString();
                     g_user = G_userFactory.getUser("", user.getEmail(), cashier.getName(), cashier.getSurName(), "cashier", newUser.getPassword());
                 case "customer":
-                    customer = CustomerFactory.getCustomer(user.getEmail(), user.getName(), user.getSurName());
+                    customer = CustomerFactory.getCustomer(user.getEmail());
                     customer = customerService.read(user.getEmail());
                     customerService.update(customer);
                     stringUser = customer.toString();
@@ -193,3 +193,4 @@ public class UserController /**implements ControllerInt<User,String>*/
         return login;
     }
 }
+ */

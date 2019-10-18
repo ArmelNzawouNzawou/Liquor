@@ -25,14 +25,9 @@ public class CustomerController  {
 
 
     @PostMapping("/create")
-    public Customer create(@RequestBody Customer_address ca) {
+    public Customer create(@RequestBody Customer customer) {
 
-        if(ca!=null){
-            Customer cust= CustomerFactory.getCustomer(ca.getCustomer().getName(),ca.getCustomer().getSurName(),ca.getCustomer().getSurName());
-            Address ad= AddressFactory.getAddress(ca.getAddress().getEmailAddress(),ca.getAddress().getAddress(),ca.getAddress().getPhoner_Number());
-            return customerService.create(cust);
-        }
-        return null;
+       return customerService.create(customer);
     }
 
     @GetMapping("/read")
