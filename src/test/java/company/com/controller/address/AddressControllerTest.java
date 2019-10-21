@@ -21,7 +21,7 @@ public class AddressControllerTest {
     @Test
     public void create() {
         //
-        Address address= AddressFactory.getAddress("email","40 Reabeik","0816048957");
+        Address address= AddressFactory.getAddress("email","40 Reabeik");
         ResponseEntity<Address> postResponse=restTemplate.postForEntity(baseURL +"/create",address,Address.class);
         assertNotNull(postResponse);
         System.out.println(postResponse.toString());

@@ -13,7 +13,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class Cashier_AddressFactoryTest {
-    Address address= AddressFactory.getAddress("espoirditekemena@","20 voortre","0617825205");
+    Address address= AddressFactory.getAddress("espoirditekemena@","20 voortre");
     private Cashier cashier= CashierFactory.getCashier("noxolo","dian");
 
    Cashier_Address cashier_address=Cashier_AddressFactory.getCustomer_Address(cashier,address);

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="liquor_db@localhost" uuid="500ed611-94ea-4ce1-97d4-9e3a119a3e08">
-      <driver-ref>mysql.8</driver-ref>
+    <data-source source="LOCAL" name="myDatabase@localhost" uuid="c2261aa4-0fb0-4f21-b7cc-af4a8013102c">
+      <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/liquor_db</jdbc-url>
+      <jdbc-url>jdbc:mysql://localhost:3306/myDatabase</jdbc-url>
       <driver-properties>
         <property name="autoReconnect" value="true" />
-        <property name="zeroDateTimeBehavior" value="CONVERT_TO_NULL" />
+        <property name="zeroDateTimeBehavior" value="convertToNull" />
         <property name="tinyInt1isBit" value="false" />
         <property name="characterEncoding" value="utf8" />
         <property name="characterSetResults" value="utf8" />

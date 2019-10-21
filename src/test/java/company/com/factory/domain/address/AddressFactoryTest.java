@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class AddressFactoryTest {
     @Autowired
     AddressInt addressInt;
-    Address address= AddressFactory.getAddress("espoirditekemena@","20 voortre","0617825205");
+    Address address= AddressFactory.getAddress("espoirditekemena@","0617825205");
 
     @Before
     public void setUp() throws Exception {

@@ -6,21 +6,20 @@ import javax.persistence.Id;
 @Entity
 public class Address {
     @Id
-    private String addressId;
+    private String address_Id;
     private String Address;
-    private String phoner_Number;
+    private String phone_Number;
 
     private Address() {
     }
 
-    public String getAddressId() {
-        return addressId;
+    public String getAddress_Id() {
+        return address_Id;
     }
 
-    public void setAddressId(String addressId) {
-        this.addressId = addressId;
+    public void setAddress_Id(String address_Id) {
+        this.address_Id = address_Id;
     }
-
 
     public String getAddress() {
         return Address;
@@ -30,46 +29,46 @@ public class Address {
         Address = address;
     }
 
-    public String getPhoner_Number() {
-        return phoner_Number;
+    public String getPhone_Number() {
+        return phone_Number;
     }
 
-    public void setPhoner_Number(String phoner_Number) {
-        this.phoner_Number = phoner_Number;
+    public void setPhone_Number(String phone_Number) {
+        this.phone_Number = phone_Number;
     }
 
     @Override
     public String toString() {
         return "Address{" +
-                "addressId='" + addressId + '\'' +
+                "addressId='" + address_Id + '\'' +
                 ", Address='" + Address + '\'' +
-                ", phoner_Number='" + phoner_Number + '\'' +
+                ", phone_Number='" + phone_Number + '\'' +
                 '}';
     }
 
     public static class Builder{
-        private String addressId;
+        private String address_Id;
         private String Address;
-        private String phoner_Number;
+        private String phone_Number;
 
 
-        public Builder(String addressId){
-            this.addressId=addressId;
+        public Builder(String address_Id){
+            this.address_Id= address_Id;
         }
 
         public Builder buildAddress(String address){
             this.Address=address;
             return this;
         }
-        public Builder buildPhoneNumber(String phoner_Number){
-            this.phoner_Number=phoner_Number;
+        public Builder buildPhoneNumber(String phone_Number){
+            this.phone_Number=phone_Number;
             return this;
         }
         public Address build(){
             Address address=new Address();
-            address.addressId=this.addressId;
+            address.address_Id=this.address_Id;
             address.Address=this.Address;
-            address.phoner_Number=this.phoner_Number;
+            address.phone_Number=this.phone_Number;
             return address;
         }
     }
