@@ -33,6 +33,9 @@ import javax.persistence.Id;
         return email;
     }
 
+      public String setEmail() {
+        this.email =  email;
+    }   
     public String getCustomer_number() {
         return customer_number;
     }
